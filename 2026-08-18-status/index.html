@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>multised — status update, 18 Aug 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* palette: a sediment core under lab light */
+  --abyss:#0A1A22;
+  --shelf:#102C36;
+  --stratum:#17414C;
+  --silt:#B9AC92;
+  --chalk:#F1EDE2;
+  --ochre:#D9A441;   /* oxidised iron band */
+  --verdigris:#5FB3AA;
+  --clay:#8C5B3F;
+
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --body:"Newsreader",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+
+  --rail:104px;
+
+  /* derived tints - redefined wholesale by the light theme */
+  --dim:rgba(185,172,146,.82);
+  --dimmer:rgba(185,172,146,.5);
+  --line:rgba(185,172,146,.16);
+  --line-strong:rgba(185,172,146,.28);
+  --link-line:rgba(95,179,170,.3);
+  --ease:cubic-bezier(.22,.68,.24,1);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--abyss);
+  color:var(--silt);
+  font-family:var(--body);
+  font-size:19px;
+  line-height:1.58;
+  -webkit-font-smoothing:antialiased;
+  overflow:hidden;
+}
+
+/* ---------- the core rail: the signature element ---------- */
+.core{
+  position:fixed; inset:0 auto 0 0; width:var(--rail);
+  display:flex; flex-direction:column;
+  background:var(--shelf);
+  border-right:1px solid var(--line);
+  z-index:20;
+}
+.core-cap{
+  height:46px; flex:none;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--mono); font-size:11px; letter-spacing:.22em;
+  color:var(--dimmer);
+  border-bottom:1px solid var(--line);
+}
+.band{
+  flex:1 1 0; position:relative; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+  border-bottom:1px solid rgba(10,26,34,.6);
+  transition:flex-grow .7s var(--ease), background-color .7s var(--ease);
+  background:var(--band, #143540);
+}
+.band::after{ /* grain */
+  content:""; position:absolute; inset:0; opacity:.5;
+  background:repeating-linear-gradient(178deg,rgba(255,255,255,.05) 0 1px,transparent 1px 4px);
+}
+.band-label{
+  position:relative; z-index:2;
+  writing-mode:vertical-rl; transform:rotate(180deg);
+  font-family:var(--mono); font-size:12px; letter-spacing:.3em;
+  text-transform:uppercase;
+  color:rgba(241,237,226,.35);
+  transition:color .5s var(--ease);
+}
+.band.on{flex-grow:1.75}
+.band.on .band-label{color:var(--chalk)}
+.band.on::before{
+  content:""; position:absolute; left:0; top:0; bottom:0; width:3px;
+  background:var(--ochre); z-index:3;
+}
+.core-depth{
+  position:absolute; left:0; right:0; top:46px; height:0;
+  border-bottom:1px solid var(--ochre);
+  box-shadow:0 0 18px rgba(217,164,65,.45);
+  transition:height .7s var(--ease);
+  z-index:4; pointer-events:none;
+}
+
+/* ---------- deck ---------- */
+.deck{position:fixed; inset:0 0 0 var(--rail); overflow:hidden}
+.slide{
+  position:absolute; inset:0;
+  padding:clamp(28px,5vh,64px) clamp(24px,5vw,88px) 96px;
+  overflow-y:auto;
+  opacity:0; visibility:hidden; pointer-events:none;
+  transition:opacity .45s var(--ease), visibility .45s;
+}
+.slide.on{opacity:1; visibility:visible; pointer-events:auto}
+.inner{max-width:1080px; margin:0 auto; min-height:100%; display:flex; flex-direction:column; justify-content:center}
+
+.eyebrow{
+  font-family:var(--mono); font-size:13px; letter-spacing:.3em; text-transform:uppercase;
+  color:var(--ochre); margin:0 0 20px;
+}
+.eyebrow .dim{color:var(--dimmer)}
+
+h1.title{
+  font-family:var(--display); font-weight:800;
+  font-size:clamp(3.2rem,10.5vw,8rem); line-height:.86; letter-spacing:-.045em;
+  color:var(--chalk); margin:0;
+}
+h1.title .fade{color:var(--verdigris)}
+h2{
+  font-family:var(--display); font-weight:600;
+  font-size:clamp(2.4rem,5.4vw,4.2rem); line-height:1.02; letter-spacing:-.03em;
+  color:var(--chalk); margin:0 0 8px;
+}
+.sub{
+  font-family:var(--body); font-style:italic; font-weight:300;
+  font-size:clamp(1.2rem,2vw,1.6rem); color:var(--dim);
+  margin:0 0 38px; max-width:58ch;
+}
+.rule{height:1px; background:linear-gradient(90deg,var(--ochre),rgba(217,164,65,0)); margin:0 0 34px}
+
+/* title slide meta */
+.meta{display:flex; flex-wrap:wrap; gap:0 56px; margin-top:44px}
+.meta div{font-family:var(--mono); font-size:14px; letter-spacing:.14em; text-transform:uppercase}
+.meta span{display:block; color:var(--dimmer); margin-bottom:6px}
+.meta strong{color:var(--chalk); font-weight:500}
+
+/* stratigraphy list (pipeline slide) */
+.strata{list-style:none; margin:0; padding:0; border-top:1px solid var(--line)}
+.strata li{
+  display:grid; grid-template-columns:158px 1fr; gap:28px; align-items:baseline;
+  padding:18px 0; border-bottom:1px solid var(--line);
+}
+.strata .name{
+  font-family:var(--mono); font-size:15px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--chalk); display:flex; align-items:center; gap:10px;
+}
+.strata .chip{width:12px; height:12px; flex:none; border-radius:2px; background:var(--c)}
+.strata .what{margin:0; font-size:1.16rem; color:var(--silt)}
+
+/* generic item list */
+.items{list-style:none; margin:0; padding:0}
+.items > li{
+  padding:16px 0 16px 26px; position:relative;
+  border-bottom:1px solid var(--line);
+}
+.items > li::before{
+  content:""; position:absolute; left:0; top:26px;
+  width:12px; height:1px; background:var(--ochre);
+}
+.items .lead{color:var(--chalk); font-size:1.32rem; display:block; line-height:1.3}
+.items .note{color:var(--dim); font-size:1.08rem; font-style:italic}
+
+a.link{
+  display:inline-block; margin-top:5px;
+  font-family:var(--mono); font-size:14px; letter-spacing:.03em;
+  color:var(--verdigris); text-decoration:none;
+  border-bottom:1px solid var(--link-line); padding-bottom:2px;
+  word-break:break-all;
+}
+a.link:hover,a.link:focus-visible{color:var(--ochre); border-bottom-color:var(--ochre)}
+a.link::after{content:" ↗"; opacity:.6}
+
+.cols{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:0 56px}
+
+.tag{
+  display:inline-block; font-family:var(--mono); font-size:12px; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--abyss); background:var(--silt);
+  padding:3px 8px; border-radius:2px; margin-bottom:14px;
+}
+.tag.warn{background:var(--clay); color:var(--chalk)}
+
+/* element panel (slim slide) */
+.panel{
+  display:flex; flex-wrap:wrap; gap:10px; margin:0 0 34px; padding:0; list-style:none;
+}
+.panel li{
+  font-family:var(--mono); font-size:16px; letter-spacing:.08em;
+  color:var(--chalk); background:var(--stratum);
+  border:1px solid var(--line-strong); border-radius:2px;
+  padding:14px 20px;
+}
+.panel li.alt{background:transparent; border-style:dashed; color:var(--ochre)}
+
+.footnote{
+  margin-top:30px; font-family:var(--mono); font-size:13px; line-height:1.7;
+  letter-spacing:.06em; color:var(--dimmer); max-width:70ch;
+}
+
+
+/* ---------- light theme: the same core, lit on paper ---------- */
+body.light{
+  --abyss:#EDE7DA;      /* pale silt paper */
+  --shelf:#E3DBC9;
+  --stratum:#E0D7C4;
+  --silt:#4A4238;       /* body ink */
+  --chalk:#16262B;      /* headline ink */
+  --ochre:#9A6314;      /* darkened for contrast on paper */
+  --verdigris:#1C7069;
+  --clay:#7A4E36;
+  --dim:rgba(74,66,56,.88);
+  --dimmer:rgba(74,66,56,.58);
+  --line:rgba(22,38,43,.18);
+  --line-strong:rgba(22,38,43,.32);
+  --link-line:rgba(28,112,105,.35);
+}
+/* the core is a physical object - it stays dark in both themes */
+body.light .core{box-shadow:1px 0 0 var(--line)}
+body.light .band-label{color:rgba(241,237,226,.42)}
+body.light .band.on .band-label{color:#FFF9EC}
+body.light .core-cap{color:rgba(241,237,226,.45)}
+body.light .core{background:#12303B}
+body.light .tag{background:var(--chalk); color:#F4F0E6}
+body.light .panel li{background:#F6F2E7}
+
+/* ---------- laser pointer ---------- */
+#laser{position:fixed; inset:0; z-index:60; pointer-events:none; opacity:0;
+  transition:opacity .2s var(--ease)}
+body.laser #laser{opacity:1}
+#laser .halo,#laser .dot{position:absolute; left:0; top:0; border-radius:50%}
+#laser .halo{
+  width:44px; height:44px; margin:-22px 0 0 -22px;
+  background:radial-gradient(circle,
+    rgba(255,94,58,.42) 0%, rgba(255,140,60,.16) 45%, rgba(255,140,60,0) 72%);
+  transition:transform .13s cubic-bezier(.2,.7,.3,1);
+}
+#laser .dot{
+  width:11px; height:11px; margin:-5.5px 0 0 -5.5px;
+  background:#FF5E3A;
+  box-shadow:0 0 10px 3px rgba(255,94,58,.85), 0 0 30px 12px rgba(217,164,65,.28);
+}
+body.laser .deck,body.laser .core{cursor:none}
+#laserBtn[aria-pressed="true"]{
+  border-color:#FF5E3A; color:#FF5E3A;
+  box-shadow:inset 0 0 0 1px rgba(255,94,58,.25);
+}
+#laserBtn[aria-pressed="true"]::before{
+  content:""; display:inline-block; width:7px; height:7px; border-radius:50%;
+  background:#FF5E3A; margin-right:8px; vertical-align:middle;
+  box-shadow:0 0 8px 2px rgba(255,94,58,.7);
+}
+
+/* ---------- chrome ---------- */
+.bar{
+  position:fixed; left:var(--rail); right:0; bottom:0; height:62px; z-index:30;
+  display:flex; align-items:center; gap:18px;
+  padding:0 clamp(18px,4vw,40px);
+  background:linear-gradient(0deg,var(--abyss) 60%,transparent);
+  font-family:var(--mono); font-size:13px; letter-spacing:.18em; text-transform:uppercase;
+}
+.bar .where{color:var(--dimmer); flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.bar button{
+  font:inherit; letter-spacing:.18em; text-transform:uppercase;
+  background:transparent; color:var(--silt);
+  border:1px solid var(--line-strong); border-radius:2px;
+  padding:8px 16px; cursor:pointer; transition:.2s;
+}
+.bar button:hover:not(:disabled){border-color:var(--ochre); color:var(--ochre)}
+.bar button:disabled{opacity:.25; cursor:default}
+.count{color:var(--chalk)}
+.count em{font-style:normal; color:var(--dimmer)}
+
+:focus-visible{outline:2px solid var(--ochre); outline-offset:3px}
+
+/* ---------- deposition reveal ---------- */
+.slide.on .rv{animation:settle .6s var(--ease) both; animation-delay:calc(var(--i,0) * 65ms)}
+@keyframes settle{
+  from{opacity:0; transform:translateY(-14px)}
+  to{opacity:1; transform:none}
+}
+
+@media (max-width:860px){
+  :root{--rail:0px}
+  body{font-size:17px}
+  .core{inset:0 0 auto 0; width:100%; height:44px; flex-direction:row; border-right:0; border-bottom:1px solid var(--line)}
+  .core-cap{display:none}
+  .band{border-bottom:0; border-right:1px solid rgba(10,26,34,.6)}
+  .band-label{writing-mode:horizontal-tb; transform:none; font-size:10px; letter-spacing:.14em}
+  .band.on::before{inset:auto 0 0 0; width:auto; height:3px}
+  .core-depth{display:none}
+  .deck{top:44px}
+  .slide{padding:26px 22px 88px}
+  .strata li{grid-template-columns:1fr; gap:6px}
+  .bar{left:0}
+  .bar .where{display:none}
+  .bar button.toggle .full{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important; transition:none !important}
+  #laser{transition:opacity .2s !important}
+}
+
+@media print{
+  body{overflow:visible; background:#fff; color:#111}
+  .core,.bar,#laser{display:none}
+  .deck{position:static; inset:auto}
+  .slide{position:static; opacity:1; visibility:visible; page-break-after:always; height:auto; padding:24px}
+  h1.title,h2,.items .lead,.meta strong{color:#111}
+  a.link{color:#333}
+}
+</style>
+</head>
+<body>
+
+<!-- the core: five strata, top to bottom -->
+<aside class="core" aria-hidden="true">
+  <div class="core-cap">0 cm</div>
+  <div class="band" data-band="pilot"   style="--band:#1B4A55"><span class="band-label">Pilot</span></div>
+  <div class="band" data-band="slim"    style="--band:#245A5C"><span class="band-label">Slim</span></div>
+  <div class="band" data-band="clean"   style="--band:#3A6355"><span class="band-label">Clean</span></div>
+  <div class="band" data-band="merged"  style="--band:#7A5A3C"><span class="band-label">Merged</span></div>
+  <div class="band" data-band="refined" style="--band:#A8763F"><span class="band-label">Refined</span></div>
+  <div class="core-depth" id="depth"></div>
+</aside>
+
+<main class="deck" id="deck">
+
+  <!-- 1 -->
+  <section class="slide" data-stage="pilot slim clean merged refined" data-where="Title">
+    <div class="inner">
+      <p class="eyebrow rv">Status update <span class="dim">/ five generations, one core</span></p>
+      <h1 class="title rv">multi<span class="fade">sed</span></h1>
+      <div class="meta">
+        <div class="rv"><span>Date</span><strong>18 / 08 / 2026</strong></div>
+        <div class="rv"><span>Presented by</span><strong>Takaya Saito</strong></div>
+        <div class="rv"><span>Sources</span><strong>Five sediment databases</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide" data-stage="pilot slim clean merged refined" data-where="Pipeline generations">
+    <div class="inner">
+      <p class="eyebrow rv">01 <span class="dim">— the pipeline</span></p>
+      <h2 class="rv">Five generations</h2>
+      <p class="sub rv">Each generation deposits on the one below it. Nothing skips a layer.</p>
+      <ul class="strata">
+        <li class="rv"><span class="name"><i class="chip" style="--c:#1B4A55"></i>Pilot</span>
+          <p class="what">Each source's raw files parsed into a per-source database.</p></li>
+        <li class="rv"><span class="name"><i class="chip" style="--c:#245A5C"></i>Slim</span>
+          <p class="what">Every source reshaped into the same seven-table schema, then annotated with quality-control flags.</p></li>
+        <li class="rv"><span class="name"><i class="chip" style="--c:#3A6355"></i>Clean</span>
+          <p class="what">The flags are applied, units harmonised, and grain size split into its own table.</p></li>
+        <li class="rv"><span class="name"><i class="chip" style="--c:#7A5A3C"></i>Merged</span>
+          <p class="what">The five clean databases are combined into a single database, with cross-source duplicates removed.</p></li>
+        <li class="rv"><span class="name"><i class="chip" style="--c:#A8763F"></i>Refined</span>
+          <p class="what">A restructured, analysis-ready base for the pristine and background-sediment analyses.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide" data-stage="pilot" data-where="Pilot">
+    <div class="inner">
+      <p class="eyebrow rv">02 <span class="dim">— generation: pilot</span></p>
+      <h2 class="rv">Pilot</h2>
+      <p class="sub rv">New material landing in the per-source databases.</p>
+      <div class="rule rv"></div>
+      <ul class="items">
+        <li class="rv"><span class="lead">Additional data for Mareano</span></li>
+        <li class="rv"><span class="lead">Grain-size data for MUDAB</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide" data-stage="slim" data-where="Slim">
+    <div class="inner">
+      <p class="eyebrow rv">03 <span class="dim">— generation: slim</span></p>
+      <h2 class="rv">Slim</h2>
+      <p class="sub rv">One shared schema across all five sources, plus quality-control flags.</p>
+      <ul class="panel">
+        <li class="rv">7 target elements</li>
+        <li class="rv alt">Fe / Al</li>
+        <li class="rv alt">Grain size</li>
+      </ul>
+      <ul class="items">
+        <li class="rv"><span class="lead">Schema updates</span>
+          <a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-slim/db-schema-slim.html">multised-slim / db-schema-slim</a></li>
+        <li class="rv"><span class="lead">Clean summary</span>
+          <a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-slim/clean-cleaning-summary.html">multised-slim / clean-cleaning-summary</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide" data-stage="clean" data-where="Clean">
+    <div class="inner">
+      <p class="eyebrow rv">04 <span class="dim">— generation: clean</span></p>
+      <h2 class="rv">Clean</h2>
+      <p class="sub rv">Flags applied, units harmonised, grain size on its own table.</p>
+      <div class="rule rv"></div>
+      <ul class="items">
+        <li class="rv"><span class="lead">Aquaculture sites</span>
+          <a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-clean/aquaculture-summary.html">multised-clean / aquaculture-summary</a></li>
+        <li class="rv"><span class="lead">Merged databases</span>
+          <a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-clean/merge-retention.html">multised-clean / merge-retention</a></li>
+      </ul>
+    </div>
+  </section>
+  <!-- 6 -->
+  <section class="slide" data-stage="merged" data-where="Merged">
+    <div class="inner">
+      <p class="eyebrow rv">05 <span class="dim">— generation: merged</span></p>
+      <h2 class="rv">Merged</h2>
+      <p class="sub rv">Five clean databases as one. Cross-source duplicates removed, then interrogated.</p>
+      <div class="cols">
+        <div>
+          <p class="tag rv">Different analyses</p>
+          <ul class="items">
+            <li class="rv"><span class="lead">Outlier flagging</span><br>
+              <a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-merged/outlier-flagging.html">outlier-flagging</a></li>
+            <li class="rv"><span class="lead">Bulk vs sieved</span><br>
+              <a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-merged/enrichment.html">enrichment</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="tag rv">Clustering</p>
+          <ul class="items">
+            <li class="rv"><span class="lead">Geochemical facies</span><br>
+              <a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-merged/geochemical-facies.html">geochemical-facies</a></li>
+          </ul>
+          <p class="tag rv" style="margin-top:26px">Handoff to refined</p>
+          <ul class="items">
+            <li class="rv"><span class="lead">Refining</span>
+              <span class="note">Builds the refined base</span><br>
+              <a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-merged/refined-build.html">refined-build</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide" data-stage="refined" data-where="Refined — Background">
+    <div class="inner">
+      <p class="eyebrow rv">06 <span class="dim">— generation: refined</span></p>
+      <h2 class="rv">Background</h2>
+      <p class="sub rv">Four routes to a background level, and a map to inspect them on.</p>
+      <div class="cols">
+        <ul class="items">
+          <li class="rv"><span class="lead">Global background</span>
+            <span class="note">Summary stats</span><br>
+            <a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-refined/background.html">background</a></li>
+          <li class="rv"><span class="lead">Grain-size-normalised background</span>
+            <span class="note">Al, Fe, and grain size</span><br>
+            <a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-refined/background-gsnorm.html">background-gsnorm</a></li>
+          <li class="rv"><span class="lead">Distribution-mixture background</span>
+            <span class="note">Evaluation with aquaculture sites</span><br>
+            <a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-refined/background-mixture.html">background-mixture</a></li>
+        </ul>
+        <ul class="items">
+          <li class="rv"><span class="lead">Pressure-based background</span>
+            <span class="note">Directly uses aquaculture sites</span><br>
+            <a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-refined/background-pressure.html">background-pressure</a></li>
+          <li class="rv"><span class="lead">Background map</span>
+            <span class="note">Interactive map</span><br>
+            <a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-refined/background-map.html">background-map</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="slide" data-stage="refined" data-where="Refined — Enrichment factor">
+    <div class="inner">
+      <p class="eyebrow rv">07 <span class="dim">— generation: refined</span></p>
+      <h2 class="rv">Enrichment factor</h2>
+      <p class="sub rv">From a definition, to a pristine call, to a map.</p>
+      <div class="rule rv"></div>
+      <ul class="items">
+        <li class="rv"><span class="lead">Enrichment factor</span>
+          <span class="note">Definition</span><br>
+          <a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-refined/background-ef.html">background-ef</a></li>
+        <li class="rv"><span class="lead">Pristine classification</span><br>
+          <a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-refined/background-pristine.html">background-pristine</a></li>
+        <li class="rv"><span class="lead">Enrichment map</span>
+          <span class="note">Interactive map</span><br>
+          <a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-refined/enrichment-map.html">enrichment-map</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section class="slide" data-stage="refined" data-where="Refined — EFSA submission">
+    <div class="inner">
+      <p class="eyebrow rv">08 <span class="dim">— generation: refined</span></p>
+      <h2 class="rv">EFSA submission</h2>
+      <p class="sub rv">Two passes at the submission format.</p>
+      <div class="rule rv"></div>
+      <ul class="items">
+        <li class="rv"><span class="lead">EFSA v1</span><br>
+          <a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-refined/efsa-format.html">efsa-format</a></li>
+        <li class="rv"><span class="lead">EFSA v2</span><br>
+          <a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-refined/efsa-format-v2.html">efsa-format-v2</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section class="slide" data-stage="pilot slim clean merged refined" data-where="All reports">
+    <div class="inner">
+      <p class="eyebrow rv">09 <span class="dim">— index</span></p>
+      <h2 class="rv">Everything, in one place</h2>
+      <p class="sub rv">Eighteen reports across four repositories.</p>
+      <div class="cols">
+        <div>
+          <p class="tag rv">multised-slim</p>
+          <ul class="items">
+            <li class="rv"><a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-slim/db-schema-slim.html">db-schema-slim</a></li>
+            <li class="rv"><a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-slim/clean-cleaning-summary.html">clean-cleaning-summary</a></li>
+          </ul>
+          <p class="tag rv" style="margin-top:26px">multised-clean</p>
+          <ul class="items">
+            <li class="rv"><a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-clean/aquaculture-summary.html">aquaculture-summary</a></li>
+            <li class="rv"><a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-clean/merge-retention.html">merge-retention</a></li>
+          </ul>
+          <p class="tag rv" style="margin-top:26px">multised-merged</p>
+          <ul class="items">
+            <li class="rv"><a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-merged/outlier-flagging.html">outlier-flagging</a></li>
+            <li class="rv"><a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-merged/enrichment.html">enrichment</a></li>
+            <li class="rv"><a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-merged/geochemical-facies.html">geochemical-facies</a></li>
+            <li class="rv"><a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-merged/refined-build.html">refined-build</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="tag rv">multised-refined</p>
+          <ul class="items">
+            <li class="rv"><a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-refined/background.html">background</a></li>
+            <li class="rv"><a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-refined/background-gsnorm.html">background-gsnorm</a></li>
+            <li class="rv"><a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-refined/background-mixture.html">background-mixture</a></li>
+            <li class="rv"><a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-refined/background-pressure.html">background-pressure</a></li>
+            <li class="rv"><a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-refined/background-map.html">background-map</a></li>
+            <li class="rv"><a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-refined/background-ef.html">background-ef</a></li>
+            <li class="rv"><a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-refined/background-pristine.html">background-pristine</a></li>
+            <li class="rv"><a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-refined/enrichment-map.html">enrichment-map</a></li>
+            <li class="rv"><a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-refined/efsa-format.html">efsa-format</a></li>
+            <li class="rv"><a class="link" target="_blank" rel="noopener" href="https://seafood-hazards.github.io/multised-refined/efsa-format-v2.html">efsa-format-v2</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<nav class="bar">
+  <span class="count" id="count">01<em> / 10</em></span>
+  <span class="where" id="where"></span>
+  <button id="themeBtn" class="toggle" type="button" aria-pressed="false"
+          title="Lighter background (B)">Light</button>
+  <button id="laserBtn" class="toggle" type="button" aria-pressed="false"
+          title="Laser pointer (L)">Laser<span class="full"> pointer</span></button>
+  <button id="prev" type="button" aria-label="Previous slide">Prev</button>
+  <button id="next" type="button" aria-label="Next slide">Next</button>
+</nav>
+
+<div id="laser" aria-hidden="true"><div class="halo"></div><div class="dot"></div></div>
+
+<script>
+(function(){
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var bands  = Array.prototype.slice.call(document.querySelectorAll('.band'));
+  var depth  = document.getElementById('depth');
+  var count  = document.getElementById('count');
+  var where  = document.getElementById('where');
+  var prev   = document.getElementById('prev');
+  var next   = document.getElementById('next');
+  var i = 0;
+
+  // index the reveal targets once, so the deposition stagger is stable
+  slides.forEach(function(s){
+    Array.prototype.slice.call(s.querySelectorAll('.rv')).forEach(function(el, n){
+      el.style.setProperty('--i', n);
+    });
+  });
+
+  function show(n){
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function(s, k){
+      s.classList.toggle('on', k === i);
+      s.setAttribute('aria-hidden', k === i ? 'false' : 'true');
+      if (k === i) s.scrollTop = 0;
+    });
+
+    var active = (slides[i].dataset.stage || '').split(/\s+/);
+    bands.forEach(function(b){
+      b.classList.toggle('on', active.indexOf(b.dataset.band) !== -1);
+    });
+
+    // core depth marker tracks progress through the deck
+    var frac = slides.length > 1 ? i / (slides.length - 1) : 1;
+    depth.style.height = 'calc((100% - 46px) * ' + frac + ')';
+
+    count.innerHTML = pad(i + 1) + '<em> / ' + pad(slides.length) + '</em>';
+    where.textContent = slides[i].dataset.where || '';
+    prev.disabled = i === 0;
+    next.disabled = i === slides.length - 1;
+
+    if (history.replaceState) history.replaceState(null, '', '#' + (i + 1));
+  }
+
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+
+  prev.addEventListener('click', function(){ show(i - 1); });
+  next.addEventListener('click', function(){ show(i + 1); });
+
+  document.addEventListener('keydown', function(e){
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    switch(e.key){
+      case 'ArrowRight': case 'ArrowDown': case 'PageDown': case ' ':
+        e.preventDefault(); show(i + 1); break;
+      case 'ArrowLeft': case 'ArrowUp': case 'PageUp':
+        e.preventDefault(); show(i - 1); break;
+      case 'Home': e.preventDefault(); show(0); break;
+      case 'End':  e.preventDefault(); show(slides.length - 1); break;
+    }
+  });
+
+  // swipe
+  var x0 = null, y0 = null;
+  document.addEventListener('touchstart', function(e){
+    x0 = e.touches[0].clientX; y0 = e.touches[0].clientY;
+  }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    var dy = e.changedTouches[0].clientY - y0;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) show(dx < 0 ? i + 1 : i - 1);
+    x0 = y0 = null;
+  }, {passive:true});
+
+  /* ---- background theme ---- */
+  var themeBtn = document.getElementById('themeBtn');
+  var lightOn = false;
+
+  function setLight(state){
+    lightOn = state;
+    document.body.classList.toggle('light', lightOn);
+    themeBtn.textContent = lightOn ? 'Dark' : 'Light';
+    themeBtn.setAttribute('aria-pressed', lightOn ? 'true' : 'false');
+    themeBtn.title = (lightOn ? 'Darker' : 'Lighter') + ' background (B)';
+    try { localStorage.setItem('multised-light', lightOn ? '1' : '0'); } catch(err){}
+  }
+
+  themeBtn.addEventListener('click', function(){ setLight(!lightOn); themeBtn.blur(); });
+  try { if (localStorage.getItem('multised-light') === '1') setLight(true); } catch(err){}
+
+  /* ---- laser pointer: the dot becomes the cursor ---- */
+  var laserBtn = document.getElementById('laserBtn');
+  var laser    = document.getElementById('laser');
+  var halo     = laser.querySelector('.halo');
+  var dot      = laser.querySelector('.dot');
+  var lx = window.innerWidth / 2, ly = window.innerHeight / 2, queued = false, on = false;
+
+  function paint(){
+    queued = false;
+    var t = 'translate3d(' + lx + 'px,' + ly + 'px,0)';
+    halo.style.transform = t;
+    dot.style.transform  = t;
+  }
+  paint();
+
+  window.addEventListener('pointermove', function(e){
+    lx = e.clientX; ly = e.clientY;
+    if (!queued){ queued = true; requestAnimationFrame(paint); }
+  }, {passive:true});
+
+  // fade out when the pointer leaves the window, back on when it returns
+  document.addEventListener('pointerleave', function(){ if (on) laser.style.opacity = '0'; });
+  document.addEventListener('pointerenter', function(){ if (on) laser.style.opacity = ''; });
+
+  function setLaser(state){
+    on = state;
+    document.body.classList.toggle('laser', on);
+    laserBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    if (on) laser.style.opacity = '';
+    try { localStorage.setItem('multised-laser', on ? '1' : '0'); } catch(err){}
+  }
+
+  laserBtn.addEventListener('click', function(){ setLaser(!on); laserBtn.blur(); });
+
+  document.addEventListener('keydown', function(e){
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === 'l' || e.key === 'L'){ e.preventDefault(); setLaser(!on); }
+    if (e.key === 'b' || e.key === 'B'){ e.preventDefault(); setLight(!lightOn); }
+  });
+
+  try { if (localStorage.getItem('multised-laser') === '1') setLaser(true); } catch(err){}
+
+  var start = parseInt((location.hash || '').replace('#',''), 10);
+  show(isNaN(start) ? 0 : start - 1);
+})();
+</script>
+</body>
+</html>
