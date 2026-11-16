@@ -30,6 +30,7 @@ main { max-width: 760px; margin: 0 auto; padding: 64px 16px 48px; }
 .kicker { color: var(--accent); font-weight: 800; letter-spacing: .14em; text-transform: uppercase; font-size: 13px; }
 h1 { font-size: clamp(34px, 7vw, 52px); line-height: 1.05; letter-spacing: -.03em; margin: 10px 0 14px; }
 .lead { color: var(--muted); font-size: 19px; margin: 0 0 36px; }
+a.talk + a.talk { margin-top: 20px; }
 a.talk { display: block; text-decoration: none; color: inherit; background: var(--surface); border: 1px solid var(--line);
   border-radius: 18px; padding: 24px 26px; box-shadow: var(--shadow); transition: border-color .2s, transform .2s; }
 a.talk:hover, a.talk:focus-visible { border-color: var(--accent); transform: translateY(-2px); outline: none; }
@@ -54,12 +55,19 @@ footer a { color: var(--accent); }
     <div class="when">Baseline workshop, day 2 &middot; Bergen, 19 November 2026</div>
     <h2>Multised database, preliminary results and challenges</h2>
     <p>Takaya Saito, Institute of Marine Research</p>
+    <span class="go">Open the slides, with narration &rarr;</span>
+  </a>
+
+  <a class="talk" href="2026-10-12-updates/">
+    <div class="when">12 October 2026</div>
+    <h2>Recent Multised updates</h2>
+    <p>Natural background and pristine marine sediment, seven trace elements, five data sources</p>
     <span class="go">Open the slides &rarr;</span>
   </a>
 
-  <p class="note">Press the speaker button or <kbd>R</kbd> in the slides to hear the talk, with captions
-    (<kbd>C</kbd>). <b>The narration is an AI-generated voice</b> (Google Gemini). Press <kbd>O</kbd> for an overview,
-    including the backup slides.</p>
+  <p class="note">Use the arrow keys to move through the slides, and <kbd>O</kbd> for an overview.
+    In the workshop talk, press the speaker button or <kbd>R</kbd> to hear it, with captions (<kbd>C</kbd>).
+    <b>The narration is an AI-generated voice</b> (Google Gemini).</p>
 
   <footer>Results and methods: <a href="https://seafood-hazards.github.io/multised-summary/">seafood-hazards.github.io/multised-summary</a></footer>
 </main>

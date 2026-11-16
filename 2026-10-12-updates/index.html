@@ -1,0 +1,1546 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recent Multised Updates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* ---------- Theme tokens ---------- */
+:root, [data-theme="light"] {
+  --on-accent: #ffffff;
+  --bg: #f6f8fb; --bg-outer: #e9edf3; --surface: #ffffff; --surface-2: #eef3f9;
+  --text: #13202c; --muted: #5a6877; --line: #d9e1ea;
+  --accent: #1d6fe0; --accent-soft: #e2edfd; --accent2: #0e9a88; --accent2-soft: #dcf4f0;
+  --good: #2c9a55; --good-soft: #def3e5; --warn: #d08a00; --warn-soft: #fbefd2; --bad: #cf4258; --bad-soft: #fbe2e6;
+  --neutral: #c9d2dc; --s1: #3f74b5; --s2: #e0566b; --s3: #23874a; --s4: #c7a500; --s5: #9b3a8e;
+  --water1: #cfe8f7; --water2: #6fb0dc; --sed1: #d8c29a; --sed2: #b89b6c; --sed3: #8d7350;
+  --shadow: 0 10px 30px rgba(20, 40, 70, .08), 0 2px 6px rgba(20, 40, 70, .05);
+  --glow: radial-gradient(1200px 700px at 85% -10%, rgba(29,111,224,.10), transparent 60%), radial-gradient(900px 600px at -10% 110%, rgba(14,154,136,.10), transparent 60%);
+}
+[data-theme="dark"] {
+  --on-accent: #0b1218;
+  --bg: #0f141b; --bg-outer: #080b10; --surface: #171e27; --surface-2: #1d2631;
+  --text: #e7edf4; --muted: #9aa8b6; --line: #2b3542;
+  --accent: #5ea3ff; --accent-soft: #1b2c44; --accent2: #3ccbb6; --accent2-soft: #15322f;
+  --good: #4fc47e; --good-soft: #17301f; --warn: #f2b632; --warn-soft: #3a2f12; --bad: #ff6f82; --bad-soft: #3b1c22;
+  --neutral: #3a4553; --s1: #6ea4ea; --s2: #ff7d8f; --s3: #4fc47e; --s4: #e8cc3a; --s5: #d27ccb;
+  --water1: #17344c; --water2: #0b1d2d; --sed1: #5d4d35; --sed2: #4a3c28; --sed3: #34291b;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --glow: radial-gradient(1200px 700px at 85% -10%, rgba(94,163,255,.12), transparent 60%), radial-gradient(900px 600px at -10% 110%, rgba(60,203,182,.10), transparent 60%);
+}
+[data-theme="ocean"] {
+  --on-accent: #04202f;
+  --bg: #062437; --bg-outer: #03141f; --surface: #0b3350; --surface-2: #0e3d5e;
+  --text: #eaf6ff; --muted: #a2c3d8; --line: #1d5578;
+  --accent: #4fd8cc; --accent-soft: #0d4a5a; --accent2: #f6c27a; --accent2-soft: #4a3d26;
+  --good: #5fe08f; --good-soft: #10452f; --warn: #f6c27a; --warn-soft: #4a3d26; --bad: #ff8a8a; --bad-soft: #4d2632;
+  --neutral: #275676; --s1: #6fb7ff; --s2: #ff8f9c; --s3: #5fe08f; --s4: #f6d55c; --s5: #d79bff;
+  --water1: #12507a; --water2: #072b42; --sed1: #6b5a3e; --sed2: #54452f; --sed3: #3b3021;
+  --shadow: 0 12px 34px rgba(0,0,0,.35);
+  --glow: radial-gradient(1200px 700px at 80% -10%, rgba(79,216,204,.16), transparent 60%), radial-gradient(900px 600px at -10% 110%, rgba(111,183,255,.14), transparent 60%);
+}
+[data-theme="sand"] {
+  --on-accent: #ffffff;
+  --bg: #f5efe4; --bg-outer: #e8dfcf; --surface: #fffaf1; --surface-2: #f1e8d8;
+  --text: #2a241d; --muted: #6f6355; --line: #e0d4bf;
+  --accent: #b2522a; --accent-soft: #f6e0d3; --accent2: #2c6e62; --accent2-soft: #dcece7;
+  --good: #3f8a4a; --good-soft: #e1efdc; --warn: #b98100; --warn-soft: #f6e9c6; --bad: #b8394e; --bad-soft: #f5dde0;
+  --neutral: #d6cab4; --s1: #3b6ea8; --s2: #c64f5f; --s3: #3f8a4a; --s4: #b98f00; --s5: #8c3f86;
+  --water1: #d9ebee; --water2: #86b9c2; --sed1: #dcc296; --sed2: #c0a06c; --sed3: #937650;
+  --shadow: 0 10px 28px rgba(80, 60, 30, .10);
+  --glow: radial-gradient(1200px 700px at 85% -10%, rgba(178,82,42,.10), transparent 60%), radial-gradient(900px 600px at -10% 110%, rgba(44,110,98,.10), transparent 60%);
+}
+[data-theme="contrast"] {
+  --on-accent: #000000;
+  --bg: #000000; --bg-outer: #000000; --surface: #0b0b0b; --surface-2: #161616;
+  --text: #ffffff; --muted: #d6d6d6; --line: #8a8a8a;
+  --accent: #ffd400; --accent-soft: #2e2700; --accent2: #00e5ff; --accent2-soft: #00313a;
+  --good: #3dff7a; --good-soft: #0b3318; --warn: #ffb000; --warn-soft: #332300; --bad: #ff5c74; --bad-soft: #3a0d15;
+  --neutral: #4d4d4d; --s1: #4fb3ff; --s2: #ff6b81; --s3: #3dff7a; --s4: #ffd400; --s5: #e07bff;
+  --water1: #08304a; --water2: #000a12; --sed1: #6e5a38; --sed2: #54442a; --sed3: #3a2f1d;
+  --shadow: none;
+  --glow: none;
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: var(--bg-outer); color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+#deck { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; transform-origin: center center;
+  background: var(--bg); background-image: var(--glow); overflow: hidden; }
+.slide { position: absolute; inset: 0; padding: 84px 112px 112px; display: flex; flex-direction: column;
+  opacity: 0; visibility: hidden; transform: translateX(48px); transition: opacity .5s ease, transform .5s ease, visibility .5s; }
+.slide.active { opacity: 1; visibility: visible; transform: none; }
+.slide.past { transform: translateX(-48px); }
+@media (prefers-reduced-motion: reduce) { .slide { transition: opacity .2s; transform: none !important; } .rise { animation: none !important; } }
+
+.kicker { font-size: 24px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); margin: 0 0 14px; display: flex; align-items: center; gap: 14px; }
+.kicker::before { content: ""; width: 44px; height: 4px; border-radius: 2px; background: var(--accent); }
+h1 { font-size: 124px; line-height: 1.02; font-weight: 800; letter-spacing: -.035em; margin: 0; }
+h2 { font-size: 66px; line-height: 1.08; font-weight: 800; letter-spacing: -.025em; margin: 0 0 40px; }
+h3 { font-size: 36px; font-weight: 700; margin: 0 0 12px; letter-spacing: -.01em; }
+p { margin: 0; }
+.lead { font-size: 36px; color: var(--muted); line-height: 1.35; }
+.muted { color: var(--muted); }
+.small { font-size: 24px; }
+.big { font-size: 34px; line-height: 1.35; }
+.mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+.accent { color: var(--accent); } .accent2 { color: var(--accent2); } .good { color: var(--good); } .bad { color: var(--bad); } .warn { color: var(--warn); }
+b, strong { font-weight: 700; }
+
+.row { display: flex; gap: 40px; }
+.col { display: flex; flex-direction: column; gap: 24px; }
+.grow { flex: 1; min-width: 0; }
+.center { align-items: center; justify-content: center; }
+.fill { flex: 1; min-height: 0; }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 32px 36px; box-shadow: var(--shadow); }
+.card h3 { display: flex; align-items: center; gap: 14px; }
+.card p { font-size: 28px; line-height: 1.4; color: var(--muted); }
+.chip { display: inline-flex; align-items: center; gap: 10px; padding: 8px 18px; border-radius: 999px; font-size: 24px; font-weight: 600; background: var(--accent-soft); color: var(--accent); }
+.chip.good { background: var(--good-soft); color: var(--good); } .chip.bad { background: var(--bad-soft); color: var(--bad); }
+.chip.warn { background: var(--warn-soft); color: var(--warn); } .chip.teal { background: var(--accent2-soft); color: var(--accent2); }
+.chip.grey { background: var(--surface-2); color: var(--muted); }
+.ico { display: inline-flex; width: 1em; height: 1em; flex: none; }
+.ico svg { width: 100%; height: 100%; }
+.iconbox { width: 72px; height: 72px; border-radius: 20px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-size: 40px; flex: none; }
+.iconbox.teal { background: var(--accent2-soft); color: var(--accent2); } .iconbox.good { background: var(--good-soft); color: var(--good); }
+.iconbox.warn { background: var(--warn-soft); color: var(--warn); } .iconbox.bad { background: var(--bad-soft); color: var(--bad); }
+
+.plain { margin-top: auto; display: flex; align-items: center; gap: 24px; font-size: 30px; line-height: 1.35;
+  background: var(--accent2-soft); border-radius: 20px; padding: 22px 32px; color: var(--text); }
+.plain .ico { font-size: 40px; color: var(--accent2); }
+.plain .label { font-weight: 800; color: var(--accent2); white-space: nowrap; font-size: 22px; letter-spacing: .12em; text-transform: uppercase; }
+
+.stat { display: flex; flex-direction: column; gap: 6px; }
+.stat .n { font-size: 64px; font-weight: 800; letter-spacing: -.03em; line-height: 1; }
+.stat .l { font-size: 24px; color: var(--muted); }
+
+/* Equations */
+.eq { font-family: "Cambria Math", "STIX Two Math", "Latin Modern Math", Georgia, serif; font-size: 64px; display: flex; white-space: nowrap; flex-wrap: nowrap; align-items: center; justify-content: center; gap: 26px; }
+.eq .frac { display: inline-flex; flex-direction: column; align-items: center; }
+.eq .frac > span { padding: 4px 18px; }
+.eq .frac > span:first-child { border-bottom: 4px solid currentColor; }
+.eq sub { font-size: .5em; font-family: "Inter", sans-serif; font-weight: 600; color: var(--muted); }
+.eq sup { font-size: .5em; }
+.eq .paren { font-size: 1.5em; font-weight: 300; line-height: 1; }
+.eqbox { background: var(--surface); border: 1px solid var(--line); border-radius: 28px; padding: 36px 48px; box-shadow: var(--shadow); }
+.legend-list { display: grid; grid-template-columns: auto 1fr; gap: 14px 22px; font-size: 28px; align-items: baseline; }
+.legend-list .sym { font-family: "Cambria Math", Georgia, serif; font-size: 34px; font-weight: 700; color: var(--accent); text-align: right; }
+
+/* Reveal animation */
+.slide.active .rise { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; animation-delay: calc(var(--i, 0) * 90ms + 120ms); }
+@keyframes rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+
+/* Charts */
+.chart text { fill: var(--text); font-family: "Inter", sans-serif; }
+.chart .axis { stroke: var(--line); stroke-width: 2; }
+.chart .grid { stroke: var(--line); stroke-width: 1.5; stroke-dasharray: 4 6; }
+.chart .tick { fill: var(--muted); font-size: 22px; }
+.chart .lbl { font-size: 26px; font-weight: 600; }
+.chart .val { font-size: 24px; font-weight: 700; }
+
+/* Footer */
+#footer { position: absolute; left: 112px; right: 112px; bottom: 38px; display: flex; justify-content: space-between; font-size: 20px; color: var(--muted); letter-spacing: .04em; pointer-events: none; }
+#footer.hidden { opacity: 0; }
+#progress { position: absolute; left: 0; bottom: 0; height: 6px; background: var(--accent); transition: width .4s ease; }
+
+/* ---------- Controls (outside the scaled deck) ---------- */
+#controls { position: fixed; right: 18px; bottom: 18px; display: flex; align-items: center; gap: 4px; padding: 6px;
+  background: color-mix(in srgb, var(--surface) 92%, transparent); border: 1px solid var(--line); border-radius: 14px;
+  box-shadow: var(--shadow); z-index: 50; transition: opacity .3s; font-size: 14px; backdrop-filter: blur(8px); }
+#controls.idle { opacity: 0; pointer-events: none; }
+#controls button { all: unset; cursor: pointer; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; color: var(--text); font-size: 20px; }
+#controls button:hover { background: var(--surface-2); }
+#controls button:focus-visible { outline: 2px solid var(--accent); }
+#controls button.on { background: var(--bad); color: var(--on-accent); }
+#controls .count { min-width: 64px; text-align: center; font-variant-numeric: tabular-nums; color: var(--muted); font-weight: 600; }
+#controls .sep { width: 1px; height: 24px; background: var(--line); margin: 0 4px; }
+#themeMenu { position: absolute; bottom: 54px; right: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 8px; box-shadow: var(--shadow); display: none; min-width: 200px; }
+#themeMenu.open { display: block; }
+#themeMenu button { all: unset; display: flex; align-items: center; gap: 12px; width: 100%; box-sizing: border-box; padding: 10px 12px; border-radius: 10px; cursor: pointer; color: var(--text); font-size: 15px; }
+#themeMenu button:hover, #themeMenu button.sel { background: var(--surface-2); }
+#themeMenu .sw { width: 28px; height: 18px; border-radius: 5px; border: 1px solid rgba(128,128,128,.4); }
+
+/* Laser pointer */
+body.laser-on, body.laser-on * { cursor: none !important; }
+body.laser-on #controls, body.laser-on #controls * { cursor: default !important; }
+#laser { position: fixed; left: 0; top: 0; width: 22px; height: 22px; margin: -11px 0 0 -11px; border-radius: 50%; pointer-events: none; z-index: 100; display: none;
+  background: radial-gradient(circle, #fff 0 18%, #ff2a2a 30%, rgba(255,0,0,.85) 55%, rgba(255,0,0,0) 72%);
+  box-shadow: 0 0 18px 6px rgba(255, 30, 30, .55); }
+body.laser-on #laser { display: block; }
+#trail { position: fixed; inset: 0; pointer-events: none; z-index: 99; }
+
+/* Overview & help */
+.overlay { position: fixed; inset: 0; z-index: 60; background: color-mix(in srgb, var(--bg-outer) 94%, transparent); backdrop-filter: blur(6px); display: none; overflow: auto; padding: 40px; }
+.overlay.open { display: block; }
+#overviewGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 22px; max-width: 1800px; margin: 0 auto; }
+.thumb { position: relative; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; border: 2px solid var(--line); cursor: pointer; background: var(--bg); }
+.thumb:hover, .thumb.cur { border-color: var(--accent); }
+.thumb .inner { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; pointer-events: none; background: var(--bg); background-image: var(--glow); }
+.thumb .inner .slide { opacity: 1; visibility: visible; transform: none; transition: none; }
+.thumb .inner .rise { animation: none !important; }
+.thumb .num { position: absolute; left: 8px; top: 8px; background: var(--accent); color: var(--bg); font-weight: 700; font-size: 13px; padding: 2px 8px; border-radius: 6px; }
+#help .box { max-width: 640px; margin: 8vh auto; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 28px 34px; box-shadow: var(--shadow); color: var(--text); }
+#help h4 { margin: 0 0 16px; font-size: 22px; }
+#help table { width: 100%; border-collapse: collapse; font-size: 16px; }
+#help td { padding: 8px 4px; border-bottom: 1px solid var(--line); }
+#help kbd { font-family: "JetBrains Mono", monospace; background: var(--surface-2); border: 1px solid var(--line); border-radius: 6px; padding: 2px 8px; font-size: 14px; }
+#blackout { position: fixed; inset: 0; background: #000; z-index: 80; display: none; }
+#blackout.on { display: block; }
+
+/* ---------- Slide specific ---------- */
+.title-slide { padding: 0; flex-direction: row; }
+.title-slide .left { flex: 1; padding: 150px 0 120px 130px; display: flex; flex-direction: column; justify-content: center; gap: 30px; }
+.title-slide .right { width: 860px; position: relative; }
+.title-slide .who { margin-top: 40px; display: flex; flex-direction: column; gap: 10px; font-size: 38px; }
+.title-slide .who .name { font-weight: 700; }
+.title-slide .who .date { color: var(--muted); }
+
+.browser { border-radius: 20px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); background: var(--surface); }
+.browser .bar { display: flex; align-items: center; gap: 10px; padding: 14px 18px; background: var(--surface-2); border-bottom: 1px solid var(--line); }
+.browser .dot { width: 14px; height: 14px; border-radius: 50%; }
+.browser .url { margin-left: 16px; flex: 1; background: var(--surface); border-radius: 999px; padding: 8px 20px; font-size: 22px; color: var(--muted); display: flex; gap: 10px; align-items: center; }
+.browser img { display: block; width: 100%; }
+
+.navcard { display: flex; gap: 24px; align-items: center; padding: 26px 30px; }
+.navcard h3 { margin: 0 0 4px; font-size: 34px; }
+.navcard p { font-size: 26px; }
+
+.funnel { display: flex; flex-direction: column; gap: 18px; }
+.funnel .step { display: flex; align-items: center; gap: 28px; }
+.funnel .barwrap { width: 1000px; display: flex; justify-content: center; }
+.funnel .bar { height: 92px; border-radius: 18px; display: flex; align-items: center; justify-content: space-between; padding: 0 30px; color: var(--on-accent); font-size: 30px; font-weight: 700; background: var(--accent); }
+.funnel .name { font-size: 30px; font-weight: 600; width: 520px; }
+.funnel .name span { display: block; font-size: 22px; color: var(--muted); font-weight: 500; margin-top: 2px; }
+
+.srcpill { display: inline-flex; align-items: center; gap: 12px; padding: 12px 22px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); font-size: 26px; font-weight: 600; box-shadow: var(--shadow); }
+.srcpill i { width: 16px; height: 16px; border-radius: 50%; display: inline-block; }
+
+.doc { width: 520px; height: 640px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow); padding: 44px 44px; position: relative; display: flex; flex-direction: column; gap: 18px; }
+.doc::after { content: ""; position: absolute; right: -1px; top: -1px; width: 80px; height: 80px; background: linear-gradient(225deg, var(--bg) 50%, var(--surface-2) 50%); border-bottom-left-radius: 14px; }
+.doc .line { height: 14px; border-radius: 7px; background: var(--surface-2); }
+.doc .tag { position: absolute; left: -26px; bottom: 60px; background: var(--accent); color: var(--on-accent); padding: 12px 26px; border-radius: 12px; font-weight: 700; font-size: 26px; box-shadow: var(--shadow); }
+
+.index-card { flex: 1; display: flex; flex-direction: column; gap: 8px; position: relative; padding: 24px 32px; }
+.index-card p { font-size: 26px; }
+.index-card .abbr { font-size: 68px; font-weight: 800; letter-spacing: -.03em; line-height: 1; }
+.index-card .full { font-size: 28px; color: var(--muted); font-weight: 600; }
+.index-card .rank { position: absolute; top: 28px; right: 28px; }
+
+.efscale { display: flex; height: 92px; border-radius: 18px; overflow: hidden; font-weight: 700; font-size: 26px; }
+.efscale > div { display: flex; flex-direction: column; justify-content: center; align-items: center; color: var(--on-accent); text-align: center; line-height: 1.15; }
+.efscale small { font-size: 20px; font-weight: 600; opacity: .9; }
+
+.ladder { display: flex; align-items: flex-end; gap: 10px; height: 440px; }
+.ladder .stepc { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; gap: 10px; height: 100%; }
+.ladder .blk { border-radius: 12px 12px 4px 4px; display: flex; align-items: flex-start; justify-content: center; padding-top: 12px; color: var(--on-accent); font-weight: 800; font-size: 34px; }
+.ladder .cap { font-size: 19px; text-align: center; color: var(--muted); line-height: 1.2; min-height: 48px; }
+
+.hub { position: relative; width: 1696px; height: 640px; margin: 0 auto; }
+.hub .center { position: absolute; left: 50%; top: 50%; width: 300px; height: 300px; margin: -150px 0 0 -150px; border-radius: 50%; background: var(--accent); color: var(--on-accent); display: grid; place-items: center; text-align: center; font-size: 46px; font-weight: 800; line-height: 1.1; box-shadow: 0 0 0 18px var(--accent-soft); }
+.hub .node { position: absolute; width: 430px; padding: 22px 26px; }
+.hub .node h3 { font-size: 32px; margin: 0 0 6px; }
+.hub .node p { font-size: 25px; line-height: 1.3; }
+.hub .node .risk { margin-top: 10px; font-size: 21px; color: var(--warn); display: flex; gap: 8px; align-items: flex-start; }
+.hub svg.links { position: absolute; inset: 0; }
+
+.waffle { display: grid; grid-template-columns: repeat(10, 26px); gap: 5px; }
+.waffle i { width: 26px; height: 26px; border-radius: 6px; background: var(--neutral); }
+.waffle i.p { background: var(--good); } .waffle i.n { background: var(--warn); }
+.key { display: inline-flex; align-items: center; gap: 10px; font-size: 24px; color: var(--muted); }
+.key i { width: 22px; height: 22px; border-radius: 5px; display: inline-block; }
+
+.tiles { display: grid; grid-template-columns: repeat(7, 1fr); gap: 22px; }
+.tile { border-radius: 22px; padding: 22px 22px 24px; border: 3px solid var(--line); background: var(--surface); display: flex; flex-direction: column; gap: 6px; box-shadow: var(--shadow); position: relative; min-height: 400px; }
+.tile .z { font-size: 22px; color: var(--muted); font-weight: 600; }
+.tile .sym { font-size: 110px; font-weight: 800; letter-spacing: -.03em; line-height: 1; margin-top: 4px; }
+.tile .nm { font-size: 26px; font-weight: 600; }
+.tile .cnt { font-size: 22px; color: var(--muted); margin-top: auto; }
+.tile .st { font-size: 21px; font-weight: 700; padding: 6px 12px; border-radius: 10px; align-self: flex-start; margin-top: 10px; }
+.tile.ok { border-color: var(--good); } .tile.ok .sym { color: var(--good); } .tile.ok .st { background: var(--good-soft); color: var(--good); }
+.tile.no { border-color: var(--neutral); opacity: .9; } .tile.no .sym { color: var(--muted); } .tile.no .st { background: var(--surface-2); color: var(--muted); }
+
+table.heat { border-collapse: separate; border-spacing: 7px; font-size: 24px; }
+table.heat th { font-weight: 700; padding: 6px 10px; text-align: center; }
+table.heat th.rowh { text-align: left; padding-right: 20px; }
+table.heat td { width: 112px; height: 70px; text-align: center; border-radius: 12px; font-weight: 600; font-variant-numeric: tabular-nums; }
+table.heat td.dash { color: var(--muted); background: transparent; border: 2px dashed var(--line); }
+table.heat td.al { width: 170px; }
+
+.qcard { display: flex; flex-direction: column; gap: 16px; }
+.qcard .qn { font-size: 22px; font-weight: 800; color: var(--accent); letter-spacing: .1em; }
+.qcard h3 { font-size: 34px; line-height: 1.2; margin: 0; }
+.qcard p { font-size: 26px; }
+.qgrid.q3 .qcard h3 { font-size: 40px; } .qgrid.q3 .qcard p { font-size: 30px; line-height: 1.4; } .qgrid.q3 .iconbox { width: 88px; height: 88px; font-size: 48px; }
+.qgrid { display: grid; gap: 28px; }
+
+.kinds { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.kind { display: flex; gap: 26px; align-items: flex-start; padding: 30px 34px; }
+.kind h3 { font-size: 36px; margin-bottom: 8px; }
+.kind .nums { display: flex; gap: 10px; margin-top: 14px; }
+.kind .nums span { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; font-weight: 800; font-size: 24px; background: var(--surface-2); color: var(--text); }
+.kind.hot { border: 3px solid var(--bad); }
+.kind.hot .nums span { background: var(--bad-soft); color: var(--bad); }
+
+.flow-note { display: flex; gap: 16px; align-items: flex-start; font-size: 26px; line-height: 1.35; }
+.flow-note .ico { font-size: 34px; margin-top: 2px; }
+</style>
+</head>
+<body>
+<div id="deck">
+
+<!-- 1. Title -->
+<section class="slide title-slide" data-title="Title">
+  <div class="left">
+    <div class="kicker rise">Multised</div>
+    <h1 class="rise">Recent<br>Multised updates</h1>
+    <p class="lead rise" style="max-width: 860px">Natural background and pristine marine sediment, seven trace elements, five data sources</p>
+    <div class="who rise">
+      <span class="name">Takaya Saito</span>
+      <span class="date">October 12, 2026</span>
+    </div>
+  </div>
+  <div class="right">
+    <svg viewBox="0 0 860 1080" width="860" height="1080" style="position:absolute; inset:0" aria-hidden="true">
+      <defs>
+        <linearGradient id="gWater" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" style="stop-color:var(--water1)"/><stop offset="1" style="stop-color:var(--water2)"/>
+        </linearGradient>
+        <linearGradient id="gRay" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path d="M0 210 Q 70 180 140 210 T 280 210 T 420 210 T 560 210 T 700 210 T 860 210 V 1080 H 0 Z" fill="url(#gWater)"/>
+      <path d="M120 215 L 60 800 L 220 800 L 200 215 Z" fill="url(#gRay)" opacity=".5"/>
+      <path d="M420 215 L 380 760 L 520 760 L 480 215 Z" fill="url(#gRay)" opacity=".4"/>
+      <path d="M680 215 L 640 700 L 770 700 L 740 215 Z" fill="url(#gRay)" opacity=".35"/>
+      <!-- fish farm cage -->
+      <g transform="translate(540 150)">
+        <ellipse cx="120" cy="60" rx="130" ry="26" fill="none" stroke="var(--text)" stroke-width="6" opacity=".75"/>
+        <path d="M-6 66 L 20 300 M 60 84 L 70 320 M 180 84 L 170 320 M 246 66 L 220 300 M 20 300 Q 120 340 220 300" fill="none" stroke="var(--text)" stroke-width="2.5" opacity=".4" stroke-dasharray="6 7"/>
+        <path d="M80 190 q 18 -14 36 0 q -18 14 -36 0 Z M116 190 l 12 -9 v 18 Z" fill="var(--text)" opacity=".35"/>
+        <path d="M120 240 q 18 -14 36 0 q -18 14 -36 0 Z M156 240 l 12 -9 v 18 Z" fill="var(--text)" opacity=".35"/>
+      </g>
+      <!-- fish -->
+      <g fill="var(--accent2)" opacity=".8">
+        <path d="M160 470 q 40 -30 80 0 q -40 30 -80 0 Z M240 470 l 26 -18 v 36 Z"/>
+        <path d="M240 560 q 26 -20 52 0 q -26 20 -52 0 Z M292 560 l 18 -12 v 24 Z" opacity=".7"/>
+      </g>
+      <!-- seabed layers -->
+      <path d="M0 820 C 140 790 260 800 380 815 S 640 845 860 800 V 1080 H 0 Z" fill="var(--sed1)"/>
+      <path d="M0 890 C 180 870 300 900 460 905 S 720 880 860 900 V 1080 H 0 Z" fill="var(--sed2)"/>
+      <path d="M0 980 C 200 960 360 990 520 985 S 760 970 860 990 V 1080 H 0 Z" fill="var(--sed3)"/>
+      <g id="titleParticles"></g>
+      <!-- element chips -->
+      <g font-family="Inter, sans-serif" font-weight="800" text-anchor="middle">
+        <g transform="translate(120 700)"><circle r="44" fill="var(--surface)" stroke="var(--accent)" stroke-width="4"/><text y="13" font-size="36" fill="var(--accent)">Cu</text></g>
+        <g transform="translate(330 660)"><circle r="40" fill="var(--surface)" stroke="var(--accent)" stroke-width="4"/><text y="12" font-size="34" fill="var(--accent)">Zn</text></g>
+        <g transform="translate(470 745)"><circle r="34" fill="var(--surface)" stroke="var(--accent2)" stroke-width="4"/><text y="11" font-size="30" fill="var(--accent2)">Co</text></g>
+        <g transform="translate(250 760)"><circle r="34" fill="var(--surface)" stroke="var(--accent2)" stroke-width="4"/><text y="11" font-size="30" fill="var(--accent2)">Mn</text></g>
+        <g transform="translate(640 680)"><circle r="32" fill="var(--surface)" stroke="var(--muted)" stroke-width="4"/><text y="10" font-size="28" fill="var(--muted)">Mo</text></g>
+        <g transform="translate(760 760)"><circle r="30" fill="var(--surface)" stroke="var(--muted)" stroke-width="4"/><text y="10" font-size="26" fill="var(--muted)">Se</text></g>
+        <g transform="translate(560 600)"><circle r="26" fill="var(--surface)" stroke="var(--muted)" stroke-width="4"/><text y="9" font-size="26" fill="var(--muted)">I</text></g>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- 2. Updated web site -->
+<section class="slide" data-title="Updated web site">
+  <div class="kicker">Updated web site</div>
+  <h2>One site, two questions</h2>
+  <div class="row fill">
+    <div class="grow col" style="max-width: 1000px">
+      <div class="browser rise">
+        <div class="bar"><span class="dot" style="background:#ff5f57"></span><span class="dot" style="background:#febc2e"></span><span class="dot" style="background:#28c840"></span>
+          <span class="url"><span class="ico" data-icon="globe"></span>seafood-hazards.github.io/multised-summary</span></div>
+        <img src="assets/site-home.png" alt="Screenshot of the multised summary home page" style="height: 520px; object-fit: cover; object-position: top">
+      </div>
+    </div>
+    <div class="col grow" style="gap: 20px">
+      <div class="card rise" style="padding: 26px 32px">
+        <p class="small muted" style="font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-bottom: 10px">The two questions</p>
+        <p class="big"><b>1.</b> What is the natural level of each element?</p>
+        <p class="big" style="margin-top: 6px"><b>2.</b> Which samples sit at that level?</p>
+      </div>
+      <div class="card navcard rise"><span class="iconbox"><span class="ico" data-icon="flask"></span></span><div><h3>Methods</h3><p>How we find natural levels</p></div></div>
+      <div class="card navcard rise"><span class="iconbox teal"><span class="ico" data-icon="database"></span></span><div><h3>Sources</h3><p>Five public data archives</p></div></div>
+      <div class="card navcard rise"><span class="iconbox good"><span class="ico" data-icon="chart"></span></span><div><h3>Results</h3><p>Seven elements side by side</p></div></div>
+      <div class="card navcard rise"><span class="iconbox warn"><span class="ico" data-icon="help"></span></span><div><h3>Open Questions</h3><p>What is still unsettled</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. How the data was built -->
+<section class="slide" data-title="How the data was built">
+  <div class="kicker">Updated web site</div>
+  <h2>From five archives to one database</h2>
+  <div class="row fill" style="align-items: center; gap: 56px">
+    <div class="col rise" style="gap: 18px">
+      <span class="srcpill"><i style="background:var(--s2)"></i>Vannmiljø</span>
+      <span class="srcpill"><i style="background:var(--s3)"></i>ICES-DOME</span>
+      <span class="srcpill"><i style="background:var(--s4)"></i>MUDAB</span>
+      <span class="srcpill"><i style="background:var(--s1)"></i>Mareano</span>
+      <span class="srcpill"><i style="background:var(--s5)"></i>4Demon</span>
+    </div>
+    <svg width="90" height="420" viewBox="0 0 90 420" class="rise" aria-hidden="true"><path d="M0 20 C 60 20 30 210 86 210 M0 400 C 60 400 30 210 86 210 M0 210 H 86 M0 115 C 50 115 40 210 86 210 M0 305 C 50 305 40 210 86 210" fill="none" stroke="var(--line)" stroke-width="4"/></svg>
+    <div class="funnel grow" id="funnel"></div>
+  </div>
+  <div class="plain rise"><span class="ico" data-icon="bulb"></span><span class="label">In plain words</span><span>Like panning for gold. A lot of raw data goes in, and only the clean, trusted part comes out.</span></div>
+</section>
+
+<!-- 4. EFSA request -->
+<section class="slide" data-title="EFSA requirement">
+  <div class="kicker">EFSA requirement</div>
+  <h2>What EFSA asked us for</h2>
+  <div class="row fill" style="gap: 80px; align-items: center">
+    <div class="doc rise">
+      <span class="iconbox" style="width: 92px; height: 92px; font-size: 52px"><span class="ico" data-icon="file"></span></span>
+      <p style="font-size: 30px; font-weight: 700; line-height: 1.3">Data extraction of concentrations of trace elements in marine sediment</p>
+      <p class="mono muted" style="font-size: 19px; overflow-wrap: anywhere">ReplyFHF_TypeData_v1_20260427.docx</p>
+      <div class="line" style="width: 92%"></div><div class="line" style="width: 80%"></div><div class="line" style="width: 88%"></div><div class="line" style="width: 60%"></div>
+      <span class="tag"><span class="ico" data-icon="calendar" style="vertical-align: -4px"></span>&nbsp; Received April 2026</span>
+    </div>
+    <div class="grow col" style="gap: 36px">
+      <div class="row" style="align-items: center; gap: 28px">
+        <div class="card rise" style="flex: 1; text-align: center; padding: 30px">
+          <span class="iconbox" style="margin: 0 auto 14px"><span class="ico" data-icon="book"></span></span>
+          <h3 style="justify-content:center">EFSA literature review</h3><p>Published papers, last 15 years</p>
+        </div>
+        <span class="ico rise" data-icon="plus" style="font-size: 56px; color: var(--muted)"></span>
+        <div class="card rise" style="flex: 1; text-align: center; padding: 30px; border: 3px solid var(--accent2)">
+          <span class="iconbox teal" style="margin: 0 auto 14px"><span class="ico" data-icon="database"></span></span>
+          <h3 style="justify-content:center">Our field data</h3><p>Fill gaps and check results</p>
+        </div>
+      </div>
+      <div class="rise" style="display:flex; justify-content:center"><span class="ico" data-icon="down" style="font-size: 60px; color: var(--muted)"></span></div>
+      <div class="card rise" style="display: flex; align-items: center; gap: 30px; background: var(--accent); color: var(--on-accent); border: none">
+        <span style="font-size: 92px; font-weight: 800; letter-spacing: -.03em; line-height: 1">P90</span>
+        <p style="color: var(--on-accent); font-size: 32px; line-height: 1.3">The natural background for each of the seven trace elements, taken as the 90th percentile</p>
+      </div>
+    </div>
+  </div>
+  <div class="plain rise"><span class="ico" data-icon="bulb"></span><span class="label">In plain words</span><span>"The more data, the better." Selenium and iodine are the biggest gaps.</span></div>
+</section>
+
+<!-- 5. Definition of pristine -->
+<section class="slide" data-title="Definition of pristine">
+  <div class="kicker">EFSA requirement</div>
+  <h2>How EFSA tells pristine from polluted</h2>
+  <p class="lead rise" style="margin: -20px 0 26px"><b style="color: var(--text)">Pristine</b> means a sample sits at its natural level, with no human input.</p>
+  <div class="row" style="gap: 30px">
+    <div class="card index-card rise" style="border: 3px solid var(--accent)">
+      <span class="chip rank">Preferred</span>
+      <span class="abbr accent">EF</span><span class="full">Enrichment factor</span>
+      <p>Pristine when EF is below 1</p>
+    </div>
+    <div class="card index-card rise">
+      <span class="chip grey rank">If no EF</span>
+      <span class="abbr">I<sub style="font-size: .45em">geo</sub></span><span class="full">Geo-accumulation index</span>
+      <p>One element against its background</p>
+    </div>
+    <div class="card index-card rise">
+      <span class="chip grey rank">If no EF</span>
+      <span class="abbr">PLI</span><span class="full">Pollution load index</span>
+      <p>Many elements in one score</p>
+    </div>
+  </div>
+  <div class="card rise" style="margin-top: 22px; display: flex; gap: 36px; align-items: center; padding: 22px 32px">
+    <span class="iconbox warn"><span class="ico" data-icon="book"></span></span>
+    <div class="grow">
+      <h3 style="font-size: 30px; margin-bottom: 6px">Every index needs a background value</h3>
+      <p style="font-size: 25px">Classic choices are crustal values from <b style="color:var(--text)">Turekian and Wedepohl (1961)</b>. EFSA warns they can distort the real marine background, so a local background is best.</p>
+    </div>
+    <span class="chip warn" style="white-space: nowrap"><span class="ico" data-icon="pin"></span>Local beats global</span>
+  </div>
+  <div class="row rise" style="margin-top: 22px; gap: 30px">
+    <div class="card" style="flex: 1; padding: 20px 28px; border-left: 8px solid var(--good)">
+      <h3 style="font-size: 28px"><span class="ico good" data-icon="check"></span>EFSA sees as likely pristine</h3>
+      <div class="row" style="gap: 12px; flex-wrap: wrap"><span class="chip good">Marine reserves</span><span class="chip good">Offshore, case by case</span><span class="chip good">Volcanic areas</span></div>
+    </div>
+    <div class="card" style="flex: 1; padding: 20px 28px; border-left: 8px solid var(--bad)">
+      <h3 style="font-size: 28px"><span class="ico bad" data-icon="x"></span>EFSA sees as likely not pristine</h3>
+      <div class="row" style="gap: 12px; flex-wrap: wrap"><span class="chip bad">Ports</span><span class="chip bad">River mouths</span><span class="chip bad">Mining</span><span class="chip bad">Industry and busy coasts</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. EF -->
+<section class="slide" data-title="Enrichment factor">
+  <div class="kicker">Enrichment factor (EF)</div>
+  <h2>Metal per aluminium, compared with offshore</h2>
+  <div class="row" style="gap: 40px; align-items: stretch">
+    <div class="eqbox rise" style="flex: 1.15; display: flex; flex-direction: column; justify-content: center; gap: 30px">
+      <div class="eq">
+        <span>EF</span><span>=</span>
+        <span class="frac"><span>(Metal / Al)<sub>sample</sub></span><span>(Metal / Al)<sub>background</sub></span></span>
+      </div>
+      <div class="legend-list">
+        <span class="sym">Al</span><span>Aluminium, a marker for fine mud (clay)</span>
+        <span class="sym">÷</span><span>Removes the "muddier sample, more metal" effect</span>
+      </div>
+    </div>
+    <div class="card rise" style="flex: 1; padding: 26px 30px">
+      <h3 style="font-size: 30px">Background from a percentile</h3>
+      <p class="small" style="margin-bottom: 6px">Offshore samples, more than 10 km from the coast</p>
+      <div id="chartEFdist" class="chart" style="height: 330px"></div>
+    </div>
+  </div>
+  <div class="rise" style="margin-top: 34px">
+    <div class="efscale">
+      <div style="flex: 1.3; background: var(--good)">EF below 1<small>Pristine</small></div>
+      <div style="flex: 1; background: var(--warn)">1 to 2<small>Slightly enriched</small></div>
+      <div style="flex: 1; background: #e07a2f">2 to 5<small>Enriched</small></div>
+      <div style="flex: 1; background: var(--bad)">Above 5<small>Strongly enriched</small></div>
+    </div>
+  </div>
+  <div class="plain rise"><span class="ico" data-icon="bulb"></span><span class="label">In plain words</span><span>Mud soaks up metal like a sponge soaks up water. EF asks how much metal there is per sponge, not per bucket.</span></div>
+</section>
+
+<!-- 7. Igeo -->
+<section class="slide" data-title="Geo-accumulation index">
+  <div class="kicker">Geo-accumulation index (Igeo)</div>
+  <h2>A ladder where every step doubles the metal</h2>
+  <div class="row fill" style="gap: 44px">
+    <div class="col" style="flex: 1; gap: 20px">
+      <div class="eqbox rise" style="display: flex; flex-direction: column; gap: 14px; padding: 24px 36px">
+        <div class="eq" style="font-size: 50px; gap: 16px">
+          <span>I<sub style="font-family: inherit; font-size: .55em; color: inherit">geo</sub></span><span>=</span>
+          <span>log<sub style="font-family: inherit; font-size: .55em; color: inherit">2</sub></span><span class="paren">(</span>
+          <span class="frac"><span>C</span><span>1.5 × B</span></span><span class="paren">)</span>
+        </div>
+        <div class="legend-list" style="font-size: 25px; gap: 8px 20px">
+          <span class="sym">C</span><span>Concentration in the sample</span>
+          <span class="sym">B</span><span>Background, the offshore median</span>
+          <span class="sym">1.5</span><span>Room for natural variation</span>
+        </div>
+      </div>
+      <div class="card rise" style="padding: 18px 30px">
+        <h3 style="font-size: 26px; margin-bottom: 4px">Share of measurements that get a value</h3>
+        <div id="chartReach" class="chart" style="height: 170px"></div>
+      </div>
+    </div>
+    <div class="card rise" style="flex: 1.05; display: flex; flex-direction: column; padding: 28px 30px">
+      <h3 style="font-size: 28px">Müller classes</h3>
+      <div class="ladder" id="igeoLadder" style="margin-top: 10px"></div>
+    </div>
+  </div>
+  <div class="plain rise"><span class="ico" data-icon="alert"></span><span class="label">Catch</span><span>No aluminium needed, so it reaches almost every sample. It ignores mud, so we show it but never use it to decide.</span></div>
+</section>
+
+<!-- 8. PLI -->
+<section class="slide" data-title="Pollution load index">
+  <div class="kicker">Pollution load index (PLI)</div>
+  <h2>Many elements, one score</h2>
+  <div class="row fill" style="gap: 44px; align-items: stretch">
+    <div class="eqbox rise" style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 34px">
+      <div class="eq" style="font-size: 54px; gap: 16px">
+        <span>PLI</span><span>=</span>
+        <span class="paren">(</span><span>CF<sub>1</sub> × CF<sub>2</sub> × … × CF<sub>n</sub></span><span class="paren">)</span><sup style="font-size: .5em; align-self: flex-start; margin: 4px 0 0 -18px">1/n</sup>
+      </div>
+      <div class="eq" style="font-size: 52px">
+        <span>CF</span><span>=</span><span class="frac"><span>C</span><span>B</span></span>
+      </div>
+      <div class="legend-list">
+        <span class="sym">CF</span><span>Contamination factor of one element</span>
+        <span class="sym">n</span><span>Number of elements combined</span>
+      </div>
+    </div>
+    <div class="card rise" style="flex: 1.1; display: flex; flex-direction: column; gap: 18px">
+      <div class="row" style="justify-content: space-between; align-items: center"><h3 style="font-size: 28px; margin: 0">How it combines</h3><span class="chip grey">Example numbers</span></div>
+      <div id="chartPLI" class="chart" style="flex: 1"></div>
+    </div>
+  </div>
+  <div class="row rise" style="margin-top: 28px; gap: 24px">
+    <div class="plain" style="flex: 1; margin: 0"><span class="ico" data-icon="bulb"></span><span class="label">In plain words</span><span>Like one grade averaged over every school subject.</span></div>
+    <div class="plain" style="flex: 1; margin: 0; background: var(--surface-2)"><span class="ico" data-icon="book" style="color: var(--muted)"></span><span class="small">Tomlinson et al. (1980). Not yet part of the site.</span></div>
+  </div>
+</section>
+
+<!-- 9. Background, five methods -->
+<section class="slide" data-title="Background identification">
+  <div class="kicker">Background identification</div>
+  <h2>Five ways to ask "what is natural?"</h2>
+  <div class="hub rise" id="hub">
+    <svg class="links" viewBox="0 0 1696 640" aria-hidden="true" id="hubLinks"></svg>
+    <div class="center">What is<br>natural?</div>
+  </div>
+  <div class="plain rise"><span class="ico" data-icon="bulb"></span><span class="label">In plain words</span><span>Five witnesses who could each be wrong in a different way. Where they agree, we trust the story.</span></div>
+</section>
+
+<!-- 10. Background, what the five give -->
+<section class="slide" data-title="What the five give">
+  <div class="kicker">Background identification</div>
+  <h2>The five estimates side by side</h2>
+  <div class="row fill" style="gap: 44px">
+    <div class="card rise" style="flex: 1.7; padding: 26px 34px">
+      <div id="chartBg" class="chart" style="height: 560px"></div>
+    </div>
+    <div class="col" style="flex: 1; gap: 24px; justify-content: center">
+      <div class="card rise">
+        <h3><span class="ico accent" data-icon="check"></span>Agreement is the evidence</h3>
+        <p>No single method is treated as correct. Where they disagree, we say so.</p>
+      </div>
+      <div class="card rise">
+        <h3><span class="ico warn" data-icon="fish"></span>Copper and zinc spread most</h3>
+        <p>Both have a real human source in Norway, fish farms.</p>
+      </div>
+    </div>
+  </div>
+  <p class="small muted rise" style="margin-top: 18px">Bulk sediment, mg/kg dry weight, log scale. The mixture method only worked for manganese.</p>
+</section>
+
+<!-- 11. Background, Se and Mo missing -->
+<section class="slide" data-title="Selenium and molybdenum">
+  <div class="kicker">Background identification</div>
+  <h2>Why selenium and molybdenum have no background</h2>
+  <div class="row fill" style="gap: 44px">
+    <div class="card rise" style="flex: 1.6; padding: 30px 36px">
+      <h3 style="font-size: 30px">Share of measurements below what the lab could quantify</h3>
+      <div id="chartLOQ" class="chart" style="height: 500px"></div>
+    </div>
+    <div class="col" style="flex: 1; justify-content: center; gap: 24px">
+      <div class="card rise"><h3><span class="ico bad" data-icon="x"></span>Low values removed</h3><p>Too-low values are dropped during cleaning.</p></div>
+      <div class="card rise"><h3><span class="ico bad" data-icon="up"></span>Background looks too high</h3><p>Only the high end is left, so we publish no number.</p></div>
+    </div>
+  </div>
+  <div class="plain rise"><span class="ico" data-icon="bulb"></span><span class="label">In plain words</span><span>Like measuring the average height of a class after sending the short kids home.</span></div>
+</section>
+
+<!-- 12. Pristine, grain size -->
+<section class="slide" data-title="Grain size problem">
+  <div class="kicker">Estimation of pristine sediment</div>
+  <h2>Mud hides the answer</h2>
+  <div class="row fill" style="gap: 50px; align-items: center">
+    <div class="card rise" style="flex: 1.2; padding: 26px">
+      <div id="mudSand" class="chart" style="height: 470px"></div>
+    </div>
+    <div class="col" style="flex: 1; gap: 26px">
+      <p class="big rise">Fine mud naturally holds several times more metal than sand from the same seabed. <b>No pollution involved.</b></p>
+      <p class="small muted rise" style="font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-top: 10px">Two fixes</p>
+      <div class="card navcard rise"><span class="iconbox teal"><span class="ico" data-icon="sieve"></span></span><div><h3>Sieve it in the lab</h3><p>Keep only fine particles before analysis</p></div></div>
+      <div class="card navcard rise"><span class="iconbox"><span class="ico mono" style="font-weight:800; font-size: 32px; width:auto">÷Al</span></span><div><h3>Correct with aluminium</h3><p>Divide by aluminium, the enrichment factor</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13. Pristine, decision flow -->
+<section class="slide" data-title="Decision flow">
+  <div class="kicker">Estimation of pristine sediment</div>
+  <h2>How one sample gets its verdict</h2>
+  <div id="flow" class="chart rise" style="height: 560px"></div>
+  <div class="row rise" style="margin-top: auto; gap: 28px">
+    <div class="card flow-note" style="flex: 1; padding: 22px 28px"><span class="ico warn" data-icon="fish"></span><span><b>Iron is never used.</b> <span class="muted">Fish feed contains iron, so it would hide the very signal we look for.</span></span></div>
+    <div class="card flow-note" style="flex: 1; padding: 22px 28px"><span class="ico accent" data-icon="eye"></span><span><b>Igeo is shown, not used.</b> <span class="muted">It is a second reading beside the verdict.</span></span></div>
+  </div>
+</section>
+
+<!-- 14. Pristine, which control works -->
+<section class="slide" data-title="Grain-size control">
+  <div class="kicker">Estimation of pristine sediment</div>
+  <h2>Pick the control that actually works</h2>
+  <div class="row fill" style="gap: 44px">
+    <div class="card rise" style="flex: 1; display: flex; flex-direction: column; gap: 22px">
+      <h3 style="font-size: 30px">Does aluminium predict the metal in bulk sediment?</h3>
+      <div id="alTiles" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px"></div>
+      <p style="margin-top: auto">Only for copper, zinc and cobalt. Elsewhere we issue <b style="color: var(--text)">no</b> enrichment factor rather than a fake one.</p>
+    </div>
+    <div class="card rise" style="flex: 1.15; display: flex; flex-direction: column">
+      <h3 style="font-size: 30px">How much the background changes from sea to sea</h3>
+      <p class="small">Highest sea divided by lowest sea. Lower means one number fits the whole map.</p>
+      <div id="chartSpread" class="chart" style="flex: 1; margin-top: 10px"></div>
+    </div>
+  </div>
+  <div class="plain rise"><span class="ico" data-icon="bulb"></span><span class="label">Takeaway</span><span>The sieve gives the steadiest background, even before any aluminium. Sieved samples are judged without it.</span></div>
+</section>
+
+<!-- 15. Pristine, different sea -->
+<section class="slide" data-title="Different reference seas">
+  <div class="kicker">Estimation of pristine sediment</div>
+  <h2>Sieved samples are compared with a different sea</h2>
+  <div class="row fill" style="gap: 44px">
+    <div class="card rise" style="flex: 1.5; padding: 24px 30px">
+      <div id="chartSeas" class="chart" style="height: 560px"></div>
+    </div>
+    <div class="col" style="flex: 1; justify-content: center; gap: 24px">
+      <div class="card rise"><h3><span class="ico accent" data-icon="globe"></span>Sieving is a national habit</h3><p>Some countries sieve, others do not. Almost no sieved data exists in the far north.</p></div>
+      <div class="card rise" style="border: 3px solid var(--warn)"><h3><span class="ico warn" data-icon="alert"></span>So sieved samples get the strict rule only</h3><p>Their verdict says little about Norwegian waters.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 16. Pristine, verdict and cost (bulk) -->
+<section class="slide" data-title="Verdict and its cost">
+  <div class="kicker">Estimation of pristine sediment</div>
+  <h2>Most bulk samples cannot be judged</h2>
+  <div class="row fill" style="gap: 40px">
+    <div class="card rise" style="flex: 1.1; display: flex; flex-direction: column; gap: 22px">
+      <h3 style="font-size: 30px">Out of every 100 bulk measurements</h3>
+      <div class="row" style="gap: 48px; justify-content: center" id="waffles"></div>
+      <div class="row" style="gap: 30px; justify-content: center; margin-top: auto">
+        <span class="key"><i style="background: var(--good)"></i>Pristine</span>
+        <span class="key"><i style="background: var(--warn)"></i>Above background</span>
+        <span class="key"><i style="background: var(--neutral)"></i>Cannot be judged</span>
+      </div>
+    </div>
+    <div class="card rise" style="flex: 1; display: flex; flex-direction: column">
+      <h3 style="font-size: 30px">Can be judged, by distance to the nearest fish farm</h3>
+      <div id="chartFarm" class="chart" style="flex: 1"></div>
+    </div>
+  </div>
+  <div class="plain rise"><span class="ico" data-icon="alert"></span><span class="label">Why</span><span>Aluminium was rarely measured. It is missing exactly where the fish-farm question needs it most.</span></div>
+</section>
+
+<!-- 17. Pristine, sieved results -->
+<section class="slide" data-title="Sieved verdicts">
+  <div class="kicker">Estimation of pristine sediment</div>
+  <h2>Sieved samples can all be judged</h2>
+  <div class="row fill" style="gap: 40px">
+    <div class="card rise" style="flex: 1.7; display: flex; flex-direction: column">
+      <h3 style="font-size: 30px">Pristine under the strict rule</h3>
+      <div id="chartSieved" class="chart" style="flex: 1"></div>
+    </div>
+    <div class="col" style="flex: 1; justify-content: center; gap: 24px">
+      <div class="card rise" style="text-align: center"><div class="stat"><span class="n good">100%</span><span class="l">can be judged, no aluminium needed</span></div></div>
+      <div class="card rise"><h3><span class="ico accent" data-icon="flag"></span>Strict rule</h3><p>Below both concentration checks, with the sieve as the mud control.</p></div>
+      <div class="card rise"><h3><span class="ico warn" data-icon="pin"></span>Remember the caveat</h3><p>The reference is mostly North Sea and Baltic.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 18. Sources, contributions -->
+<section class="slide" data-title="Sources at a glance">
+  <div class="kicker">All five sources at a glance</div>
+  <h2>Five archives, none collected for this study</h2>
+  <div class="row fill" style="gap: 40px">
+    <div class="card rise" style="flex: 1; padding: 24px 36px">
+      <div id="chartSources" class="chart" style="height: 620px"></div>
+    </div>
+  </div>
+  <div class="plain rise"><span class="ico" data-icon="bulb"></span><span class="label">Takeaway</span><span>Vannmiljø and ICES-DOME give 70 of every 100 measurements. Keep that in mind when reading pooled results.</span></div>
+</section>
+
+<!-- 19. Sources, what they carry -->
+<section class="slide" data-title="What each source carries">
+  <div class="kicker">All five sources at a glance</div>
+  <h2>The archives do not measure the same things</h2>
+  <div class="row fill" style="gap: 40px; align-items: flex-start">
+    <div class="card rise" style="padding: 26px 30px">
+      <table class="heat" id="heat"></table>
+    </div>
+    <div class="col" style="flex: 1; gap: 24px">
+      <div class="card rise"><h3><span class="ico good" data-icon="check"></span>Copper and zinc</h3><p>Carried by all five archives.</p></div>
+      <div class="card rise"><h3><span class="ico bad" data-icon="x"></span>Iodine</h3><p>Only in ICES-DOME, so it never reaches a usable number.</p></div>
+      <div class="card rise" style="border: 3px solid var(--accent)"><h3><span class="ico accent" data-icon="flask"></span>Aluminium</h3><p>The widest gap. Mareano almost always, Vannmiljø almost never.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 20. Sources, survival -->
+<section class="slide" data-title="Survival through the pipeline">
+  <div class="kicker">All five sources at a glance</div>
+  <h2>How much data survives each step</h2>
+  <div class="row fill" style="gap: 40px">
+    <div class="card rise" style="flex: 1.8; padding: 26px 30px">
+      <div id="chartSurvive" class="chart" style="height: 590px"></div>
+    </div>
+    <div class="col" style="flex: 1; justify-content: center; gap: 24px">
+      <div class="card rise"><h3><span class="ico warn" data-icon="filter"></span>Cleaning bites everywhere</h3><p>Unusable rows go, units are aligned.</p></div>
+      <div class="card rise"><h3><span class="ico accent" data-icon="repeat"></span>Merging costs ICES-DOME</h3><p>The same cruise reported to two archives is kept only once.</p></div>
+    </div>
+  </div>
+  <p class="small muted rise" style="margin-top: 16px">Share of what was first read from each archive. Values read from the site figure.</p>
+</section>
+
+<!-- 21. Elements matrix -->
+<section class="slide" data-title="Elements at a glance">
+  <div class="kicker">All elements at a glance</div>
+  <h2>Four of seven elements get a verdict</h2>
+  <div class="tiles rise" id="tiles"></div>
+  <div class="row rise" style="margin-top: 40px; gap: 28px">
+    <div class="card flow-note" style="flex: 1"><span class="ico accent" data-icon="sieve"></span><span><b>Manganese</b> <span class="muted">is judged in sieved samples only. Aluminium does not track it in bulk.</span></span></div>
+    <div class="card flow-note" style="flex: 1"><span class="ico muted" data-icon="lock"></span><span><b>Rules fixed in advance.</b> <span class="muted">Both were set before any result was looked at.</span></span></div>
+  </div>
+  <div class="plain rise"><span class="ico" data-icon="bulb"></span><span class="label">In plain words</span><span>The limits come from the data that exist, not from how interesting an element is.</span></div>
+</section>
+
+<!-- 22. Elements, levels and pristine share -->
+<section class="slide" data-title="Background and pristine share">
+  <div class="kicker">All elements at a glance</div>
+  <h2>Natural levels and how much is pristine</h2>
+  <div class="row fill" style="gap: 40px">
+    <div class="card rise" style="flex: 1; display: flex; flex-direction: column">
+      <h3 style="font-size: 30px">Natural level, offshore median</h3>
+      <p class="small">Bulk sediment, mg/kg dry weight, log scale</p>
+      <div id="chartLevels" class="chart" style="flex: 1"></div>
+    </div>
+    <div class="card rise" style="flex: 1; display: flex; flex-direction: column">
+      <h3 style="font-size: 30px">Pristine share of judged bulk samples</h3>
+      <p class="small">EF rule versus strict rule</p>
+      <div id="chartShare" class="chart" style="flex: 1"></div>
+    </div>
+  </div>
+  <div class="plain rise"><span class="ico" data-icon="check"></span><span class="label">Takeaway</span><span>The two rules agree almost exactly. The verdict does not hinge on one threshold.</span></div>
+</section>
+
+<!-- 23. Open questions overview -->
+<section class="slide" data-title="Open questions">
+  <div class="kicker">Open questions</div>
+  <h2>Eleven open questions, four kinds</h2>
+  <div class="kinds fill">
+    <div class="card kind hot rise"><span class="iconbox bad"><span class="ico" data-icon="target"></span></span><div><h3>Is the answer right?</h3><p>Could change what is already published</p><div class="nums"><span>1</span><span>2</span><span>3</span></div></div></div>
+    <div class="card kind rise"><span class="iconbox"><span class="ico" data-icon="database"></span></span><div><h3>Data we hold but do not use</h3><p>No new sampling needed</p><div class="nums"><span>4</span><span>5</span><span>6</span></div></div></div>
+    <div class="card kind rise"><span class="iconbox teal"><span class="ico" data-icon="map"></span></span><div><h3>Judging more seabed, more fairly</h3><p>Only one route has to work</p><div class="nums"><span>7</span><span>8</span><span>9</span><span>10</span></div></div></div>
+    <div class="card kind rise"><span class="iconbox warn"><span class="ico" data-icon="pencil"></span></span><div><h3>Working with the data</h3><p>How new data could get in</p><div class="nums"><span>11</span></div></div></div>
+  </div>
+  <div class="plain rise"><span class="ico" data-icon="bulb"></span><span class="label">Note</span><span>None of these changes today's results, and none is a promise of future work.</span></div>
+</section>
+
+<!-- 24. Open questions 1-3 -->
+<section class="slide" data-title="Is the answer right?">
+  <div class="kicker">Open questions</div>
+  <h2>Is the answer right?</h2>
+  <div class="qgrid q3 fill" style="grid-template-columns: repeat(3, 1fr)">
+    <div class="card qcard rise"><span class="qn">QUESTION 1</span><span class="iconbox bad"><span class="ico" data-icon="scale"></span></span><h3>Are too many samples called pristine?</h3><p>Offshore is not always clean. If the reference is already polluted, the bar sits too low.</p></div>
+    <div class="card qcard rise"><span class="qn">QUESTION 2</span><span class="iconbox bad"><span class="ico" data-icon="clock"></span></span><h3>Was the background the same in 1975 as today?</h3><p>Fifty years of data share one number. If nature moved, old and new samples face different truths.</p></div>
+    <div class="card qcard rise"><span class="qn">QUESTION 3</span><span class="iconbox bad"><span class="ico" data-icon="target"></span></span><h3>How sure is a verdict near the line?</h3><p>Just inside means pristine, just outside means not.</p><div id="chartThreshold" class="chart" style="height: 150px; margin-top: auto"></div></div>
+  </div>
+</section>
+
+<!-- 25. Open questions 4-6 -->
+<section class="slide" data-title="Data we already hold">
+  <div class="kicker">Open questions</div>
+  <h2>Data we already hold but do not use</h2>
+  <div class="qgrid q3 fill" style="grid-template-columns: repeat(3, 1fr)">
+    <div class="card qcard rise"><span class="qn">QUESTION 4</span><span class="iconbox"><span class="ico" data-icon="down"></span></span><h3>Can values below the detection limit be recovered?</h3><p>Standard statistics exist for this. Molybdenum and selenium could then get an answer.</p></div>
+    <div class="card qcard rise"><span class="qn">QUESTION 5</span><span class="iconbox"><span class="ico" data-icon="repeat"></span></span><h3>Can repeat visits tell us more?</h3><p>Two visits to one spot show how much results wobble on their own.</p></div>
+    <div class="card qcard rise" style="flex-direction: row; gap: 28px"><div class="col" style="gap: 16px; flex: 1"><span class="qn">QUESTION 6</span><span class="iconbox"><span class="ico" data-icon="core"></span></span><h3>Can deep core layers serve as a reference?</h3><p>Deep layers settled before industry. A local, pre-industrial baseline.</p></div><div id="coreIllo" style="width: 130px"></div></div>
+  </div>
+</section>
+
+<!-- 26. Open questions 7-11 -->
+<section class="slide" data-title="Judging more seabed">
+  <div class="kicker">Open questions</div>
+  <h2>Judging more seabed, and working with the data</h2>
+  <div class="qgrid fill" style="grid-template-columns: repeat(5, 1fr); gap: 22px">
+    <div class="card qcard rise" style="padding: 26px"><span class="qn">QUESTION 7</span><span class="iconbox teal"><span class="ico" data-icon="flask"></span></span><h3 style="font-size: 30px">Other normalisers than aluminium?</h3><p>Lithium and others checked. They add little new ground.</p><span class="chip grey" style="margin-top: auto; align-self: flex-start">Least promising</span></div>
+    <div class="card qcard rise" style="padding: 26px; border: 3px solid var(--accent2)"><span class="qn">QUESTION 8</span><span class="iconbox teal"><span class="ico" data-icon="pin"></span></span><h3 style="font-size: 30px">Can a clean spot count for all elements?</h3><p>Clean for copper may vouch for zinc. Fair or circular?</p><span class="chip teal" style="margin-top: auto; align-self: flex-start">Largest question</span></div>
+    <div class="card qcard rise" style="padding: 26px"><span class="qn">QUESTION 9</span><span class="iconbox teal"><span class="ico" data-icon="map"></span></span><h3 style="font-size: 30px">Fill the gaps between samples?</h3><p>Only copper and zinc have dense enough data.</p></div>
+    <div class="card qcard rise" style="padding: 26px"><span class="qn">QUESTION 10</span><span class="iconbox teal"><span class="ico" data-icon="globe"></span></span><h3 style="font-size: 30px">Group sieved samples by region?</h3><p>Fairer comparison, but smaller reference groups.</p></div>
+    <div class="card qcard rise" style="padding: 26px"><span class="qn">QUESTION 11</span><span class="iconbox warn"><span class="ico" data-icon="pencil"></span></span><h3 style="font-size: 30px">Enter new data by hand?</h3><p>Each rebuild overwrites. No form or checks exist yet.</p></div>
+  </div>
+</section>
+
+<!-- 27. Thanks -->
+<section class="slide" data-title="Thank you">
+  <div class="kicker">Summary</div>
+  <h2>Three things to remember</h2>
+  <div class="row" style="gap: 30px">
+    <div class="card rise" style="flex: 1"><div class="stat"><span class="n accent">115&#8239;175</span><span class="l">measurements from five archives, one database</span></div></div>
+    <div class="card rise" style="flex: 1"><div class="stat"><span class="n good">4 of 7</span><span class="l">elements with a background and a pristine verdict</span></div></div>
+    <div class="card rise" style="flex: 1"><div class="stat"><span class="n warn">11</span><span class="l">open questions that guide the next steps</span></div></div>
+  </div>
+  <div class="rise" style="margin-top: auto; text-align: center">
+    <p style="font-size: 110px; font-weight: 800; letter-spacing: -.03em">Thank you</p>
+    <p class="lead" style="margin-top: 16px; display: inline-flex; gap: 16px; align-items: center"><span class="ico accent" data-icon="globe"></span>seafood-hazards.github.io/multised-summary</p>
+  </div>
+  <div style="height: 40px"></div>
+</section>
+
+<div id="footer"><span>Recent Multised updates</span><span id="footNum"></span></div>
+<div id="progress"></div>
+</div>
+
+<!-- Controls -->
+<div id="controls" role="toolbar" aria-label="Presentation controls">
+  <button id="bPrev" title="Previous (Left arrow)" aria-label="Previous slide"><span class="ico" data-icon="left"></span></button>
+  <span class="count" id="count">1 / 1</span>
+  <button id="bNext" title="Next (Right arrow)" aria-label="Next slide"><span class="ico" data-icon="right"></span></button>
+  <span class="sep"></span>
+  <button id="bOverview" title="Overview (O)" aria-label="Slide overview"><span class="ico" data-icon="grid"></span></button>
+  <button id="bTheme" title="Theme (T)" aria-label="Choose theme"><span class="ico" data-icon="palette"></span></button>
+  <button id="bLaser" title="Laser pointer (L)" aria-label="Toggle laser pointer"><span class="ico" data-icon="laser"></span></button>
+  <button id="bFull" title="Fullscreen (F)" aria-label="Toggle fullscreen"><span class="ico" data-icon="expand"></span></button>
+  <button id="bHelp" title="Shortcuts (?)" aria-label="Keyboard shortcuts"><span class="ico" data-icon="keyboard"></span></button>
+  <div id="themeMenu" role="menu"></div>
+</div>
+<div id="laser"></div>
+<canvas id="trail"></canvas>
+<div id="overview" class="overlay"><div id="overviewGrid"></div></div>
+<div id="help" class="overlay"><div class="box">
+  <h4>Keyboard shortcuts</h4>
+  <table>
+    <tr><td><kbd>→</kbd> <kbd>Space</kbd> <kbd>PgDn</kbd></td><td>Next slide</td></tr>
+    <tr><td><kbd>←</kbd> <kbd>PgUp</kbd></td><td>Previous slide</td></tr>
+    <tr><td><kbd>Home</kbd> <kbd>End</kbd></td><td>First or last slide</td></tr>
+    <tr><td><kbd>L</kbd></td><td>Laser pointer on or off</td></tr>
+    <tr><td><kbd>T</kbd></td><td>Next theme</td></tr>
+    <tr><td><kbd>O</kbd> <kbd>Esc</kbd></td><td>Overview of all slides</td></tr>
+    <tr><td><kbd>F</kbd></td><td>Fullscreen</td></tr>
+    <tr><td><kbd>B</kbd></td><td>Black screen</td></tr>
+    <tr><td><kbd>1</kbd> to <kbd>9</kbd> then <kbd>Enter</kbd></td><td>Jump to a slide number</td></tr>
+  </table>
+</div></div>
+<div id="blackout"></div>
+
+<script>
+(() => {
+'use strict';
+const NB = ' ';
+const fmt = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, NB);
+
+/* ---------- Icons ---------- */
+const ICONS = {
+  flask: 'M9 3h6M10 3v6L4.5 18.5A2 2 0 0 0 6.2 21.5h11.6a2 2 0 0 0 1.7-3L14 9V3M7 15h10',
+  database: 'M4 6c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3zM4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6',
+  chart: 'M4 20V11M10 20V5M16 20v-7M21 20H3',
+  help: 'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17.5v.5',
+  file: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M8 13h8M8 17h6',
+  calendar: 'M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM3 10h18M8 2v4M16 2v4',
+  check: 'M5 12.5l4.5 4.5L19 7',
+  x: 'M6 6l12 12M18 6L6 18',
+  alert: 'M12 3l10 18H2zM12 10v5M12 18v.5',
+  bulb: 'M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z',
+  pin: 'M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12zM12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z',
+  sieve: 'M3 9h18l-2 5a7 7 0 0 1-14 0zM7 12h10M8 15h8M10 9v8M14 9v8',
+  fish: 'M3 12c3-5 9-6 14-2l4-3v10l-4-3c-5 4-11 3-14-2zM8 11.5v.5',
+  clock: 'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 7v5l3 2',
+  target: 'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 6a6 6 0 1 0 0 12 6 6 0 0 0 0-12zM12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4z',
+  grid: 'M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z',
+  repeat: 'M17 2l4 4-4 4M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4M21 13v2a3 3 0 0 1-3 3H3',
+  pencil: 'M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4',
+  palette: 'M12 3a9 9 0 1 0 0 18c1.1 0 1.5-.8 1.5-1.5 0-1.4-1-1.6-1-2.8 0-.9.7-1.7 1.7-1.7H17a4 4 0 0 0 4-4C21 6.6 17 3 12 3zM7.5 11.5v.01M9.5 7.5v.01M14.5 7.5v.01M17 11v.01',
+  laser: 'M12 2v4M12 18v4M2 12h4M18 12h4M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z',
+  expand: 'M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5',
+  left: 'M15 5l-7 7 7 7', right: 'M9 5l7 7-7 7', down: 'M12 4v16M5 13l7 7 7-7', up: 'M12 20V4M5 11l7-7 7 7',
+  keyboard: 'M3 6h18v12H3zM7 10h.01M11 10h.01M15 10h.01M7 14h10',
+  scale: 'M12 3v18M5 7h14M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0zM8 21h8',
+  book: 'M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5zM4 21.5A2.5 2.5 0 0 1 6.5 19H20v3H6.5',
+  globe: 'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM2 12h20M12 2c3 3.5 3 16.5 0 20M12 2c-3 3.5-3 16.5 0 20',
+  plus: 'M12 5v14M5 12h14',
+  eye: 'M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12zM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z',
+  flag: 'M5 21V4M5 4h12l-2 4 2 4H5',
+  filter: 'M3 4h18l-7 8v6l-4 2v-8z',
+  lock: 'M5 11h14v10H5zM8 11V7a4 4 0 0 1 8 0v4',
+  map: 'M9 4L3 6v14l6-2 6 2 6-2V4l-6 2zM9 4v14M15 6v14',
+  core: 'M9 2h6v20H9zM9 7h6M9 12h6M9 17h6',
+  shape: 'M2 19c2.5-1 3.5-11 6-11s3 6 4.5 6S15 5 17.5 5 20.5 17 22 19M2 21h20',
+  layers: 'M12 3l9 5-9 5-9-5zM3 13l9 5 9-5',
+  pct: 'M5 19L19 5M7 5a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM17 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4z'
+};
+function iconSVG(name) {
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${ICONS[name] || ''}"/></svg>`;
+}
+document.querySelectorAll('[data-icon]').forEach(el => { el.innerHTML = iconSVG(el.dataset.icon); });
+
+/* ---------- Seeded random for illustrations ---------- */
+let seed = 7;
+const rnd = () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
+
+/* ---------- Title particles ---------- */
+(() => {
+  let s = '';
+  for (let i = 0; i < 120; i++) {
+    const x = rnd() * 860, y = 830 + rnd() * 240, r = 1.5 + rnd() * 4;
+    s += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}" fill="var(--text)" opacity="${(0.08 + rnd() * .15).toFixed(2)}"/>`;
+  }
+  document.getElementById('titleParticles').innerHTML = s;
+})();
+
+/* ---------- SVG helpers ---------- */
+const svg = (w, h, inner) => `<svg viewBox="0 0 ${w} ${h}" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">${inner}</svg>`;
+const T = (x, y, txt, cls = '', extra = '') => `<text x="${x}" y="${y}" class="${cls}" ${extra}>${txt}</text>`;
+const put = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
+
+/* Funnel (slide 3) */
+(() => {
+  const steps = [['Harmonised', 'Same format and units', 378895], ['Quality controlled', 'Flags checked', 211031],
+    ['Merged', 'Duplicates across archives removed', 190771], ['Analysis database', 'Ready for analysis', 115755],
+    ['Reported on the site', 'What every page is built on', 115175]];
+  const max = steps[0][2];
+  document.getElementById('funnel').innerHTML = steps.map(([n, d, v], i) => {
+    const w = Math.max(30, v / max * 100);
+    const op = 0.55 + i * 0.11;
+    return `<div class="step rise"><div class="barwrap"><div class="bar" style="width:${w}%; opacity:${op}; ${i === 4 ? 'background: var(--good); opacity: 1' : ''}"><span>${fmt(v)}</span></div></div><div class="name">${n}<span>${d}</span></div></div>`;
+  }).join('');
+})();
+
+/* EF distribution with percentiles (slide 6) */
+(() => {
+  const W = 760, H = 330, L = 30, R = 30, top = 70, base = 270;
+  const sig = 0.5, pdf = x => x <= 0 ? 0 : Math.exp(-Math.pow(Math.log(x), 2) / (2 * sig * sig)) / (x * sig * Math.sqrt(2 * Math.PI));
+  const xmax = 3.2, sx = x => L + x / xmax * (W - L - R);
+  let peak = 0; for (let x = 0.01; x < xmax; x += 0.01) peak = Math.max(peak, pdf(x));
+  const sy = y => base - y / peak * (base - top);
+  let d = `M ${sx(0)} ${base}`;
+  for (let x = 0.02; x <= xmax; x += 0.02) d += ` L ${sx(x).toFixed(1)} ${sy(pdf(x)).toFixed(1)}`;
+  d += ` L ${sx(xmax)} ${base} Z`;
+  const p50 = 1, p90 = Math.exp(1.2816 * sig);
+  let fill50 = `M ${sx(0)} ${base}`;
+  for (let x = 0.02; x <= p50; x += 0.02) fill50 += ` L ${sx(x).toFixed(1)} ${sy(pdf(x)).toFixed(1)}`;
+  fill50 += ` L ${sx(p50)} ${sy(pdf(p50))} L ${sx(p50)} ${base} Z`;
+  const inner = `
+    <path d="${d}" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="3"/>
+    <path d="${fill50}" fill="var(--accent)" opacity=".25"/>
+    <line x1="${L}" y1="${base}" x2="${W - R}" y2="${base}" class="axis"/>
+    <line x1="${sx(p50)}" y1="${top - 34}" x2="${sx(p50)}" y2="${base}" stroke="var(--accent)" stroke-width="4"/>
+    <line x1="${sx(p90)}" y1="${top - 34}" x2="${sx(p90)}" y2="${base}" stroke="var(--warn)" stroke-width="4" stroke-dasharray="10 7"/>
+    ${T(sx(p50) - 12, top - 44, 'P50, median', 'lbl', 'text-anchor="end" style="fill:var(--accent)"')}
+    ${T(sx(p50) - 12, top - 16, 'EF reference', 'tick', 'text-anchor="end"')}
+    ${T(sx(p90) + 12, top - 44, 'P90', 'lbl', 'style="fill:var(--warn)"')}
+    ${T(sx(p90) + 12, top - 16, 'EFSA background', 'tick')}
+    ${T(sx(p90) + 12, top + 10, 'and strict-rule check', 'tick')}
+    ${T(L, base + 40, 'Low metal / Al', 'tick')}${T(W - R, base + 40, 'High metal / Al', 'tick', 'text-anchor="end"')}`;
+  put('chartEFdist', svg(W, H + 20, inner));
+})();
+
+/* Igeo reach bars (slide 7) */
+(() => {
+  const W = 760, H = 180, L = 270, R = 90;
+  const rows = [['All samples', 9.8, 97.2], ['Within 1 km of a farm', 0.3, 99.9]];
+  const sx = v => L + v / 100 * (W - L - R);
+  let s = '';
+  rows.forEach(([n, ef, ig], i) => {
+    const y = 10 + i * 88;
+    s += T(0, y + 26, n, 'lbl', 'style="font-size:22px"');
+    s += `<rect x="${L}" y="${y}" width="${Math.max(3, sx(ef) - L)}" height="30" rx="6" fill="var(--muted)"/>` + T(sx(ef) + 10, y + 23, `EF ${ef}%`, 'val', 'style="font-size:21px"');
+    s += `<rect x="${L}" y="${y + 38}" width="${sx(ig) - L}" height="30" rx="6" fill="var(--accent)"/>` + T(sx(ig) + 10, y + 61, `${ig}%`, 'val', 'style="font-size:21px;fill:var(--accent)"');
+    s += T(L + 12, y + 61, 'Igeo', 'val', 'style="font-size:20px;fill:var(--on-accent)"');
+  });
+  put('chartReach', svg(W, H, s));
+})();
+
+/* Igeo ladder (slide 7) */
+(() => {
+  const cls = [['0', 'Unpolluted', '≤ 0'], ['1', 'Unpolluted to moderate', '0 to 1'], ['2', 'Moderate', '1 to 2'], ['3', 'Moderate to strong', '2 to 3'],
+    ['4', 'Strong', '3 to 4'], ['5', 'Strong to extreme', '4 to 5'], ['6', 'Extreme', 'above 5']];
+  const cols = ['var(--good)', '#8cc152', 'var(--warn)', '#e9902f', '#e0672f', 'var(--bad)', '#8e2240'];
+  document.getElementById('igeoLadder').innerHTML = cls.map(([n, name, r], i) =>
+    `<div class="stepc"><div class="cap">${name}</div><div class="blk" style="height:${70 + i * 46}px; background:${cols[i]}${i === 6 ? '; color:#fff' : ''}">${n}</div><div class="cap" style="min-height:0; font-weight:600">${r}</div></div>`).join('');
+})();
+
+/* PLI example (slide 8) */
+(() => {
+  const W = 820, H = 470;
+  const cf = [['Cu', 1.8], ['Zn', 1.2], ['Co', 0.7], ['Mn', 0.9]];
+  const pli = Math.pow(cf.reduce((a, [, v]) => a * v, 1), 1 / cf.length);
+  let s = '';
+  cf.forEach(([e, v], i) => {
+    const y = 30 + i * 100;
+    const col = v > 1 ? 'var(--warn)' : 'var(--good)';
+    s += `<rect x="0" y="${y}" width="230" height="78" rx="16" fill="var(--surface-2)" stroke="${col}" stroke-width="3"/>`;
+    s += T(24, y + 50, e, 'lbl', 'style="font-size:32px;font-weight:800"');
+    s += T(206, y + 50, `CF ${v.toFixed(1)}`, 'val', `text-anchor="end" style="font-size:28px;fill:${col}"`);
+    s += `<path d="M 238 ${y + 39} C 330 ${y + 39} 330 240 410 240" fill="none" stroke="var(--line)" stroke-width="4"/>`;
+  });
+  // gauge
+  const cx = 600, cy = 300, r = 160, a0 = Math.PI, a1 = 0, vmax = 2;
+  const ang = v => a0 + (a1 - a0) * Math.min(v, vmax) / vmax;
+  const pt = (a, rr) => [cx + rr * Math.cos(a), cy - rr * Math.sin(a)];
+  const arc = (v1, v2, col) => { const [x1, y1] = pt(ang(v1), r), [x2, y2] = pt(ang(v2), r); return `<path d="M ${x1} ${y1} A ${r} ${r} 0 0 1 ${x2} ${y2}" fill="none" stroke="${col}" stroke-width="34"/>`; };
+  s += arc(0, 1, 'var(--good)') + arc(1, 2, 'var(--warn)');
+  const [nx, ny] = pt(ang(pli), r - 40);
+  s += `<line x1="${cx}" y1="${cy}" x2="${nx}" y2="${ny}" stroke="var(--text)" stroke-width="8" stroke-linecap="round"/><circle cx="${cx}" cy="${cy}" r="16" fill="var(--text)"/>`;
+  s += `<rect x="404" y="222" width="12" height="36" rx="4" fill="var(--line)"/>`;
+  s += T(cx, cy + 72, `PLI ${pli.toFixed(2)}`, 'lbl', 'text-anchor="middle" style="font-size:44px;font-weight:800"');
+  const [lx, ly] = pt(ang(1), r + 34);
+  s += T(lx, ly, '1', 'tick', 'text-anchor="middle" style="font-size:26px;font-weight:700"');
+  s += T(cx - r + 10, cy + 50, 'Baseline', 'tick', 'text-anchor="middle" style="fill:var(--good);font-weight:700"');
+  s += T(cx + r - 10, cy + 50, 'Polluted', 'tick', 'text-anchor="middle" style="fill:var(--warn);font-weight:700"');
+  put('chartPLI', svg(W, H, s));
+})();
+
+/* Hub (slide 9) */
+(() => {
+  const nodes = [
+    ['pin', 'Where', 'More than 10 km offshore', 'Offshore is not always clean'],
+    ['pct', 'How much', 'The low end of all values', 'Fails if most samples are polluted'],
+    ['shape', 'Shape', 'Two overlapping groups', 'Works only if the groups separate'],
+    ['layers', 'Texture', 'Corrected for mud content', 'Most samples lack mud data'],
+    ['fish', 'Pressure', 'Far from any fish farm', 'Other sources exist']
+  ];
+  const pos = [[633, 0], [1266, 150], [1180, 440], [86, 440], [0, 150]];
+  const hub = document.getElementById('hub');
+  let lines = '';
+  nodes.forEach(([ic, h, p, risk], i) => {
+    const [x, y] = pos[i];
+    const d = document.createElement('div');
+    d.className = 'card node';
+    d.style.left = x + 'px'; d.style.top = y + 'px';
+    d.innerHTML = `<h3><span class="ico accent">${iconSVG(ic)}</span>${h}</h3><p>${p}</p><div class="risk"><span class="ico">${iconSVG('alert')}</span><span>${risk}</span></div>`;
+    hub.appendChild(d);
+    lines += `<line x1="848" y1="320" x2="${x + 215}" y2="${y + 80}" stroke="var(--line)" stroke-width="4" stroke-dasharray="2 10" stroke-linecap="round"/>`;
+  });
+  document.getElementById('hubLinks').innerHTML = lines;
+})();
+
+/* Background estimates dot plot (slide 10) */
+(() => {
+  const W = 1100, H = 540, L = 190, R = 40, top = 100, rowH = 105;
+  const methods = [['Offshore median', 'var(--accent)'], ['Offshore P90', 'var(--warn)'], ['Mixture', 'var(--s5)'], ['Mud corrected', 'var(--accent2)'], ['Far from farms', 'var(--s2)']];
+  const data = [['Copper', [13.2, 33, null, 19.6, 15.2]], ['Zinc', [57, 130, null, 79.6, 62]], ['Cobalt', [8.33, 11.9, null, 11.5, 8.47]], ['Manganese', [274, 932, 493, 432, 291]]];
+  const lmin = Math.log10(5), lmax = Math.log10(1500);
+  const sx = v => L + (Math.log10(v) - lmin) / (lmax - lmin) * (W - L - R);
+  let s = '';
+  [5, 10, 20, 50, 100, 200, 500, 1000].forEach(t => { s += `<line x1="${sx(t)}" y1="${top - 20}" x2="${sx(t)}" y2="${top + rowH * 4 - 30}" class="grid"/>` + T(sx(t), top + rowH * 4 + 2, t, 'tick', 'text-anchor="middle"'); });
+  let lx = 10;
+  methods.forEach(([n, c], i) => { s += `<circle cx="${lx + 10}" cy="22" r="10" fill="${c}"/>` + T(lx + 28, 30, n, 'tick', 'style="fill:var(--text)"'); lx += n.length * 11 + 56; });
+  data.forEach(([el, vals], i) => {
+    const y = top + i * rowH + 20;
+    const vv = vals.filter(v => v != null);
+    s += T(L - 24, y + 9, el, 'lbl', 'text-anchor="end"');
+    s += `<line x1="${sx(Math.min(...vv))}" y1="${y}" x2="${sx(Math.max(...vv))}" y2="${y}" stroke="var(--neutral)" stroke-width="14" stroke-linecap="round"/>`;
+    vals.forEach((v, j) => { if (v == null) return; s += `<circle cx="${sx(v)}" cy="${y}" r="15" fill="${methods[j][1]}" stroke="var(--surface)" stroke-width="3"/>`; });
+  });
+  put('chartBg', svg(W, H, s));
+})();
+
+/* LOQ bars (slide 11) */
+(() => {
+  const W = 1000, H = 500, L = 90, R = 110, top = 10, bh = 48, gap = 18;
+  const data = [['Cu', 1.6], ['Zn', 0.2], ['Co', 0.3], ['Mn', 0.0], ['Mo', 52.2], ['Se', 68.6], ['I', 4.3]];
+  const sx = v => L + v / 80 * (W - L - R);
+  let s = '';
+  [0, 20, 40, 60, 80].forEach(t => { s += T(sx(t), H - 6, t + '%', 'tick', 'text-anchor="middle"'); });
+  data.forEach(([e, v], i) => {
+    const y = top + i * (bh + gap), bad = v > 20;
+    s += T(L - 18, y + bh / 2 + 9, e, 'lbl', 'text-anchor="end"');
+    s += `<rect x="${L}" y="${y}" width="${Math.max(4, sx(v) - L)}" height="${bh}" rx="8" fill="${bad ? 'var(--bad)' : 'var(--accent)'}"/>`;
+    s += T(Math.max(sx(v), L + 4) + 12, y + bh / 2 + 9, v.toFixed(1) + '%', 'val', bad ? 'style="fill:var(--bad)"' : '');
+  });
+  const tx = sx(20);
+  s += `<line x1="${tx}" y1="0" x2="${tx}" y2="${top + 7 * (bh + gap) - gap + 6}" stroke="var(--bad)" stroke-width="3" stroke-dasharray="10 8"/>`;
+  s += `<rect x="${tx + 14}" y="${top + 4 * (bh + gap) - 74}" width="330" height="44" rx="10" fill="var(--bad-soft)"/>` + T(tx + 30, top + 4 * (bh + gap) - 44, 'Above 20%, no background', 'tick', 'style="fill:var(--bad);font-weight:700"');
+  put('chartLOQ', svg(W, H, s));
+})();
+
+/* Mud vs sand illustration (slide 12) */
+(() => {
+  const W = 900, H = 470;
+  let s = '';
+  const jar = (x, title, sub, grain, n, metal) => {
+    let g = `<rect x="${x}" y="60" width="380" height="330" rx="26" fill="var(--surface-2)" stroke="var(--line)" stroke-width="3"/>`;
+    g += `<clipPath id="clip${x}"><rect x="${x + 6}" y="66" width="368" height="318" rx="22"/></clipPath><g clip-path="url(#clip${x})">`;
+    for (let i = 0; i < n; i++) {
+      const cx = x + 10 + rnd() * 360, cy = 140 + rnd() * 250, r = grain * (0.7 + rnd() * 0.6);
+      g += `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${r.toFixed(1)}" fill="var(--sed${1 + Math.floor(rnd() * 3)})"/>`;
+    }
+    for (let i = 0; i < metal; i++) {
+      const cx = x + 24 + rnd() * 330, cy = 160 + rnd() * 210;
+      g += `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="9" fill="var(--accent)" stroke="var(--surface)" stroke-width="2.5"/>`;
+    }
+    g += `</g>` + T(x + 190, 34, title, 'lbl', 'text-anchor="middle" style="font-size:34px;font-weight:800"') + T(x + 190, 436, sub, 'tick', 'text-anchor="middle" style="font-size:26px"');
+    return g;
+  };
+  s += jar(20, 'Fine mud', 'Lots of metal', 7, 900, 34);
+  s += jar(500, 'Coarse sand', 'Little metal', 26, 90, 6);
+  s += `<circle cx="470" cy="455" r="0"/>`;
+  put('mudSand', svg(W, H + 10, s));
+})();
+
+/* Decision flow (slide 13) */
+(() => {
+  const W = 1700, H = 560;
+  const box = (x, y, w, h, title, sub, kind = '') => {
+    const fill = kind === 'good' ? 'var(--good-soft)' : kind === 'grey' ? 'var(--surface-2)' : kind === 'q' ? 'var(--surface)' : 'var(--accent-soft)';
+    const stroke = kind === 'good' ? 'var(--good)' : kind === 'grey' ? 'var(--neutral)' : kind === 'q' ? 'var(--text)' : 'var(--accent)';
+    let g = `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="22" fill="${fill}" stroke="${stroke}" stroke-width="3" ${kind === 'q' ? 'stroke-dasharray="10 7"' : ''}/>`;
+    const lines = title.split('|');
+    const y0 = y + h / 2 - (lines.length - 1) * 19 + (sub ? -12 : 10);
+    lines.forEach((ln, i) => { g += T(x + w / 2, y0 + i * 38, ln, 'lbl', `text-anchor="middle" style="font-size:30px;font-weight:700"`); });
+    if (sub) g += T(x + w / 2, y0 + (lines.length - 1) * 38 + 38, sub, 'tick', 'text-anchor="middle" style="font-size:23px"');
+    return g;
+  };
+  const arrow = (d, label, lx, ly) => `<path d="${d}" fill="none" stroke="var(--muted)" stroke-width="4" marker-end="url(#ah)"/>` + (label ? `<rect x="${lx - 8}" y="${ly - 28}" width="${label.length * 14 + 16}" height="38" rx="10" fill="var(--bg)"/>` + T(lx, ly, label, 'tick', 'style="font-weight:700;fill:var(--text);font-size:24px"') : '');
+  let s = `<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--muted)"/></marker></defs>`;
+  s += box(0, 230, 220, 100, 'One sample', '', 'grey');
+  s += box(300, 205, 300, 150, 'Sieved before|analysis?', '', 'q');
+  s += box(720, 30, 400, 120, 'The sieve controls mud', 'Grain size fixed in the lab');
+  s += box(720, 390, 400, 150, 'Does aluminium|predict this metal?', '', 'q');
+  s += box(1250, 30, 450, 120, 'Pristine if below both', 'concentration checks, strict rule', 'good');
+  s += box(1250, 300, 450, 120, 'Pristine if EF below 1', 'Enrichment factor', 'good');
+  s += box(1250, 450, 450, 100, 'No verdict', 'Cannot be judged', 'grey');
+  s += arrow('M 220 280 L 292 280');
+  s += arrow('M 450 205 L 450 90 L 710 90', 'Yes', 470, 120);
+  s += arrow('M 450 355 L 450 465 L 710 465', 'No, bulk', 470, 432);
+  s += arrow('M 1120 90 L 1240 90');
+  s += arrow('M 1120 440 C 1180 440 1180 360 1240 360', 'Yes', 1128, 404);
+  s += arrow('M 1120 500 L 1240 500', 'No', 1160, 535);
+  put('flow', svg(W, H, s));
+})();
+
+/* Aluminium tiles + spread chart (slide 14) */
+(() => {
+  const els = [['Cu', 1], ['Zn', 1], ['Co', 1], ['Mn', 0], ['Mo', 0], ['Se', 0], ['I', 0]];
+  document.getElementById('alTiles').innerHTML = els.map(([e, ok]) =>
+    `<div style="border-radius:18px; padding:18px; text-align:center; border:3px solid ${ok ? 'var(--good)' : 'var(--line)'}; background:${ok ? 'var(--good-soft)' : 'var(--surface-2)'}">
+      <div style="font-size:52px; font-weight:800; color:${ok ? 'var(--good)' : 'var(--muted)'}">${e}</div>
+      <div style="font-size:34px; color:${ok ? 'var(--good)' : 'var(--muted)'}">${iconSVG(ok ? 'check' : 'x').replace('<svg', '<svg width="34" height="34"')}</div></div>`).join('');
+  const W = 820, H = 400, L = 80, base = 330, top = 30;
+  const groups = [['Copper', [9.5, 4.4, 2.6]], ['Zinc', [10.7, 4.9, 1.7]]];
+  const cols = ['var(--neutral)', 'var(--accent)', 'var(--accent2)'];
+  const names = ['Bulk, raw', 'Bulk ÷ Al', 'Sieved'];
+  const sy = v => base - v / 12 * (base - top);
+  let s = `<line x1="${L - 20}" y1="${base}" x2="${W}" y2="${base}" class="axis"/>`;
+  groups.forEach(([g, vals], gi) => {
+    const gx = L + gi * 380;
+    vals.forEach((v, i) => {
+      const x = gx + i * 112;
+      s += `<rect x="${x}" y="${sy(v)}" width="92" height="${base - sy(v)}" rx="10" fill="${cols[i]}"/>`;
+      s += T(x + 46, sy(v) - 12, v + '×', 'val', 'text-anchor="middle" style="font-size:28px"');
+      s += T(x + 46, base + 32, names[i], 'tick', 'text-anchor="middle" style="font-size:20px"');
+    });
+    s += T(gx + 158, base + 68, g, 'lbl', 'text-anchor="middle" style="font-size:28px;font-weight:800"');
+  });
+  put('chartSpread', svg(W, H + 30, s));
+})();
+
+/* Reference seas (slide 15) */
+(() => {
+  const W = 1040, H = 560;
+  const latTop = 74, latBot = 50, y0 = 50, y1 = 510;
+  const sy = lat => y0 + (latTop - lat) / (latTop - latBot) * (y1 - y0);
+  let s = T(0, 30, 'How far north', 'lbl', 'style="font-weight:800"');
+  // latitude axis
+  s += `<line x1="140" y1="${y0}" x2="140" y2="${y1}" class="axis"/>`;
+  [50, 55, 60, 65, 70].forEach(l => { s += `<line x1="132" y1="${sy(l)}" x2="148" y2="${sy(l)}" class="axis"/>` + T(118, sy(l) + 8, l + '°N', 'tick', 'text-anchor="end"'); });
+  [['Barents Sea', 72], ['Norwegian Sea', 65.6], ['North Sea', 56.5], ['Baltic Sea', 53.5]].forEach(([n, l]) => { s += T(640, sy(l) + 8, n, 'tick', 'text-anchor="end" style="font-style:italic"'); });
+  const pts = [['Bulk', 66.6, 275, 'var(--accent)', '19 757 samples'], ['Sieved, under 63 µm', 52.7, 36, 'var(--accent2)', '4 323 samples'], ['Sieved, under 20 µm', 54.3, 29, 'var(--accent2)', '10 701 samples']];
+  pts.forEach(([n, lat, , c, cnt], i) => {
+    const y = sy(lat);
+    s += `<circle cx="140" cy="${y}" r="16" fill="${c}" stroke="var(--surface)" stroke-width="4"/>`;
+    s += T(172, y + 9 + (i === 2 ? -10 : i === 1 ? 10 : 0), `${n}, ${lat}°N`, 'lbl', `style="fill:${c};font-weight:800;font-size:25px"`);
+  });
+  // depth panel
+  const dx = 720, dw = 300, dTop = 70, dBot = 510, dmax = 300;
+  s += T(dx - 20, 30, 'How deep', 'lbl', 'style="font-weight:800"');
+  s += `<rect x="${dx}" y="${dTop}" width="${dw}" height="${dBot - dTop}" rx="16" fill="var(--water1)" opacity=".8"/>`;
+  s += `<path d="M ${dx} ${dTop} q 25 -12 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0" fill="none" stroke="var(--accent)" stroke-width="3"/>`;
+  pts.forEach(([n, , dep, c], i) => {
+    const x = dx + 50 + i * 100, yb = dTop + dep / dmax * (dBot - dTop - 20);
+    s += `<line x1="${x}" y1="${dTop}" x2="${x}" y2="${yb}" stroke="${c}" stroke-width="10" stroke-linecap="round"/>`;
+    s += `<circle cx="${x}" cy="${yb}" r="13" fill="${c}"/>` + T(x, yb + 44, dep + ' m', 'val', `text-anchor="middle" style="fill:var(--text)"`);
+  });
+  s += T(dx + 50, dBot + 40, 'Bulk', 'tick', 'text-anchor="middle"') + T(dx + 200, dBot + 40, 'Sieved', 'tick', 'text-anchor="middle"');
+  put('chartSeas', svg(W, H + 10, s));
+})();
+
+/* Waffles (slide 16) */
+(() => {
+  const data = [['Copper', 5, 6], ['Zinc', 5, 6], ['Cobalt', 30, 33]];
+  document.getElementById('waffles').innerHTML = data.map(([n, p, q]) => {
+    let cells = '';
+    for (let i = 0; i < 100; i++) cells += `<i class="${i < p ? 'p' : i < p + q ? 'n' : ''}"></i>`;
+    return `<div class="col" style="gap:14px; align-items:center"><div class="waffle">${cells}</div><div style="font-size:30px; font-weight:800">${n}</div><div class="small muted">${p + q} of 100 judged</div></div>`;
+  }).join('');
+  const W = 560, H = 470, L = 10, base = 400, top = 50;
+  const vals = [['under 1 km', 0], ['1 to 5 km', 6], ['5 to 20 km', 7], ['over 20 km', 44]];
+  const sy = v => base - v / 50 * (base - top);
+  let s = `<line x1="${L}" y1="${base}" x2="${W}" y2="${base}" class="axis"/>`;
+  vals.forEach(([n, v], i) => {
+    const x = L + 10 + i * 136;
+    s += `<rect x="${x}" y="${sy(v)}" width="112" height="${Math.max(3, base - sy(v))}" rx="10" fill="${i === 3 ? 'var(--accent)' : 'var(--bad)'}"/>`;
+    s += T(x + 56, sy(v) - 14, v + '%', 'val', 'text-anchor="middle" style="font-size:34px"');
+    s += T(x + 56, base + 40, n, 'tick', 'text-anchor="middle" style="font-size:21px"');
+  });
+  s += `<g transform="translate(${L + 85} ${base - 70})" fill="var(--muted)" opacity=".8"><path d="M -30 0 q 30 -22 60 0 q -30 22 -60 0 Z M 30 0 l 20 -14 v 28 Z"/></g>`;
+  put('chartFarm', svg(W, H, s));
+})();
+
+/* Sieved strict shares (slide 17) */
+(() => {
+  const W = 1100, H = 520, L = 40, base = 420, top = 40;
+  const data = [['Copper', 68, 91], ['Zinc', 91, 74], ['Cobalt', 96, 85], ['Manganese', 92, 45]];
+  const sy = v => base - v / 100 * (base - top);
+  let s = `<line x1="${L}" y1="${base}" x2="${W}" y2="${base}" class="axis"/>`;
+  [25, 50, 75, 100].forEach(t => { s += `<line x1="${L}" y1="${sy(t)}" x2="${W}" y2="${sy(t)}" class="grid"/>`; });
+  data.forEach(([n, a, b], i) => {
+    const x = L + 50 + i * 260;
+    [[a, 'var(--accent)'], [b, 'var(--accent2)']].forEach(([v, c], j) => {
+      s += `<rect x="${x + j * 100}" y="${sy(v)}" width="88" height="${base - sy(v)}" rx="10" fill="${c}"/>`;
+      s += T(x + j * 100 + 44, sy(v) - 12, v + '%', 'val', 'text-anchor="middle" style="font-size:28px"');
+    });
+    s += T(x + 94, base + 44, n, 'lbl', 'text-anchor="middle" style="font-weight:800"');
+  });
+  s += `<rect x="${W - 520}" y="${H - 34}" width="22" height="22" rx="5" fill="var(--accent)"/>` + T(W - 488, H - 16, 'Under 63 µm', 'tick');
+  s += `<rect x="${W - 280}" y="${H - 34}" width="22" height="22" rx="5" fill="var(--accent2)"/>` + T(W - 248, H - 16, 'Under 20 µm', 'tick');
+  put('chartSieved', svg(W, H, s));
+})();
+
+/* Sources (slide 18) */
+(() => {
+  const W = 1690, H = 620;
+  const src = [['Vannmiljø', 53432, 46.4, 17654, 1975, 2025, 'var(--s2)'], ['ICES-DOME', 27324, 23.7, 5776, 1985, 2024, 'var(--s3)'],
+    ['MUDAB', 17885, 15.5, 1838, 1984, 2024, 'var(--s4)'], ['Mareano', 14289, 12.4, 397, 2003, 2025, 'var(--s1)'], ['4Demon', 2245, 1.9, 134, 1979, 2015, 'var(--s5)']];
+  const L = 230, mw = 560, yx0 = 1080, yx1 = 1650, rowH = 100, top = 80;
+  const sy = (y) => yx0 + (y - 1975) / 50 * (yx1 - yx0);
+  let s = T(L, 34, 'Measurements', 'lbl', 'style="font-weight:800"') + T(yx0, 34, 'Years covered', 'lbl', 'style="font-weight:800"');
+  [1975, 1985, 1995, 2005, 2015, 2025].forEach(y => { s += `<line x1="${sy(y)}" y1="${top - 14}" x2="${sy(y)}" y2="${top + rowH * 5 - 20}" class="grid"/>` + T(sy(y), top + rowH * 5 + 10, y, 'tick', 'text-anchor="middle"'); });
+  src.forEach(([n, m, sh, sites, y0, y1, c], i) => {
+    const y = top + i * rowH;
+    s += `<circle cx="22" cy="${y + 30}" r="12" fill="${c}"/>` + T(46, y + 40, n, 'lbl', 'style="font-size:30px;font-weight:700"');
+    const w = m / 53432 * mw;
+    s += `<rect x="${L}" y="${y + 6}" width="${w}" height="50" rx="10" fill="${c}"/>`;
+    s += T(L + w + 16, y + 42, `${fmt(m)}  ·  ${sh}%`, 'val', 'style="font-size:27px"');
+    s += T(L, y + 84, `${fmt(sites)} sites`, 'tick', 'style="font-size:20px"');
+    s += `<rect x="${sy(y0)}" y="${y + 14}" width="${sy(y1) - sy(y0)}" height="34" rx="17" fill="${c}" opacity=".85"/>`;
+    s += T(sy(y0) + 14, y + 39, `${y0} to ${y1}`, 'tick', 'style="fill:var(--on-accent);font-weight:700;font-size:20px"');
+  });
+  put('chartSources', svg(W, H, s));
+})();
+
+/* Heatmap (slide 19) */
+(() => {
+  const els = ['Cu', 'Zn', 'Co', 'Mn', 'Mo', 'Se', 'I'];
+  const rows = [['Mareano', [3274, 3277, 3251, 3215, 443, 829, null], 99.6], ['Vannmiljø', [26493, 25225, 660, 618, 418, 18, null], 2.1],
+    ['ICES-DOME', [9626, 10051, 1489, 5751, 335, 57, 15], 87.5], ['MUDAB', [6108, 6057, 1463, 3181, 1070, 6, null], 70.7], ['4Demon', [1119, 1126, null, null, null, null, null], 79.3]];
+  const lmax = Math.log10(26493);
+  let h = `<tr><th></th>${els.map(e => `<th>${e}</th>`).join('')}<th style="color:var(--accent)">Al paired</th></tr>`;
+  rows.forEach(([n, vals, al]) => {
+    h += `<tr><th class="rowh">${n}</th>` + vals.map(v => {
+      if (v == null) return '<td class="dash">none</td>';
+      const p = Math.round(12 + Math.log10(v) / lmax * 78);
+      return `<td style="background: color-mix(in srgb, var(--accent2) ${p}%, var(--surface)); color: ${p > 55 ? 'var(--on-accent)' : 'var(--text)'}">${fmt(v)}</td>`;
+    }).join('') + `<td class="al" style="background: linear-gradient(90deg, var(--accent) ${al}%, var(--surface-2) ${al}%); color:${al > 50 ? 'var(--on-accent)' : 'var(--text)'}; font-weight: 800">${al}%</td></tr>`;
+  });
+  document.getElementById('heat').innerHTML = h;
+})();
+
+/* Survival lines (slide 20) */
+(() => {
+  const W = 1100, H = 590, L = 90, R = 230, top = 30, base = 500;
+  const steps = ['Parse', 'Harmonise', 'Clean', 'Merge', 'Refine', 'Report'];
+  const lines = [['Vannmiljø', [100, 100, 87, 86.5, 86.5, 86], 'var(--s2)'], ['Mareano', [100, 100, 75.5, 75.5, 75.5, 75], 'var(--s1)'],
+    ['MUDAB', [100, 100, 69, 68.7, 68.7, 69], 'var(--s4)'], ['4Demon', [100, 100, 68, 68, 68, 64], 'var(--s5)'], ['ICES-DOME', [100, 100, 66, 47, 47, 47], 'var(--s3)']];
+  const sx = i => L + i / 5 * (W - L - R), sy = v => base - v / 100 * (base - top);
+  let s = '';
+  [0, 25, 50, 75, 100].forEach(t => { s += `<line x1="${L}" y1="${sy(t)}" x2="${W - R}" y2="${sy(t)}" class="grid"/>` + T(L - 16, sy(t) + 8, t + '%', 'tick', 'text-anchor="end"'); });
+  steps.forEach((n, i) => { s += T(sx(i), base + 46, n, 'tick', 'text-anchor="middle" style="font-size:24px"'); });
+  s += `<rect x="${sx(1.6)}" y="${top}" width="${sx(2.4) - sx(1.6)}" height="${base - top}" fill="var(--warn)" opacity=".08"/>`;
+  s += `<rect x="${sx(2.6)}" y="${top}" width="${sx(3.4) - sx(2.6)}" height="${base - top}" fill="var(--accent)" opacity=".08"/>`;
+  const ends = [];
+  lines.forEach(([n, v, c]) => {
+    s += `<polyline points="${v.map((y, i) => sx(i) + ',' + sy(y)).join(' ')}" fill="none" stroke="${c}" stroke-width="6" stroke-linejoin="round"/>`;
+    v.forEach((y, i) => { s += `<circle cx="${sx(i)}" cy="${sy(y)}" r="7" fill="${c}"/>`; });
+    ends.push([n, v[5], c]);
+  });
+  let last = -1e9;
+  ends.sort((a, b) => b[1] - a[1]).forEach(([n, v, c]) => { let y = sy(v) + 8; if (y - last < 30) y = last + 30; last = y; s += T(sx(5) + 20, y, `${n}  ${Math.round(v)}%`, 'lbl', `style="fill:${c};font-weight:800;font-size:24px"`); });
+  put('chartSurvive', svg(W, H, s));
+})();
+
+/* Element tiles (slide 21) */
+(() => {
+  const t = [['29', 'Cu', 'Copper', 46620, 1, 'Verdict'], ['30', 'Zn', 'Zinc', 45736, 1, 'Verdict'], ['27', 'Co', 'Cobalt', 6863, 1, 'Verdict'], ['25', 'Mn', 'Manganese', 12765, 1, 'Verdict, sieved'],
+    ['42', 'Mo', 'Molybdenum', 2266, 0, '52% too low'], ['34', 'Se', 'Selenium', 910, 0, '69% too low'], ['53', 'I', 'Iodine', 15, 0, 'Only 15 values']];
+  document.getElementById('tiles').innerHTML = t.map(([z, sym, nm, n, ok, st]) =>
+    `<div class="tile ${ok ? 'ok' : 'no'}"><span class="z">${z}</span><span class="sym">${sym}</span><span class="nm">${nm}</span><span class="st">${ok ? iconSVG('check').replace('<svg', '<svg width="18" height="18" style="vertical-align:-3px"') + ' ' : ''}${st}</span><span class="cnt">${fmt(n)} measurements</span></div>`).join('');
+})();
+
+/* Levels + share (slide 22) */
+(() => {
+  const W = 800, H = 430, L = 170, R = 90;
+  const d = [['Manganese', 274], ['Zinc', 57], ['Copper', 13.2], ['Cobalt', 8.33]];
+  const sx = v => L + Math.log10(v) / 3 * (W - L - R);
+  let s = '';
+  [1, 10, 100, 1000].forEach(t => { s += `<line x1="${sx(t)}" y1="10" x2="${sx(t)}" y2="${H - 60}" class="grid"/>` + T(sx(t), H - 20, t, 'tick', 'text-anchor="middle"'); });
+  d.forEach(([n, v], i) => {
+    const y = 20 + i * 88;
+    s += T(L - 18, y + 42, n, 'lbl', 'text-anchor="end"');
+    s += `<rect x="${L}" y="${y}" width="${sx(v) - L}" height="64" rx="10" fill="var(--accent)"/>`;
+    s += T(sx(v) + 12, y + 42, v, 'val', 'style="font-size:28px"');
+  });
+  put('chartLevels', svg(W, H, s));
+  const W2 = 800, base = 340, top = 30;
+  const g = [['Copper', 44, 44], ['Zinc', 43, 43], ['Cobalt', 48, 47]];
+  const sy = v => base - v / 60 * (base - top);
+  let s2 = `<line x1="20" y1="${base}" x2="${W2}" y2="${base}" class="axis"/>`;
+  g.forEach(([n, a, b], i) => {
+    const x = 60 + i * 250;
+    [[a, 'var(--accent)'], [b, 'var(--good)']].forEach(([v, c], j) => {
+      s2 += `<rect x="${x + j * 95}" y="${sy(v)}" width="84" height="${base - sy(v)}" rx="10" fill="${c}"/>` + T(x + j * 95 + 42, sy(v) - 12, v + '%', 'val', 'text-anchor="middle" style="font-size:28px"');
+    });
+    s2 += T(x + 89, base + 42, n, 'lbl', 'text-anchor="middle" style="font-weight:800"');
+  });
+  s2 += `<rect x="200" y="${H - 34}" width="22" height="22" rx="5" fill="var(--accent)"/>` + T(232, H - 16, 'EF rule', 'tick');
+  s2 += `<rect x="420" y="${H - 34}" width="22" height="22" rx="5" fill="var(--good)"/>` + T(452, H - 16, 'Strict rule', 'tick');
+  put('chartShare', svg(W2, H, s2));
+})();
+
+/* Threshold uncertainty (slide 24) */
+(() => {
+  const W = 480, H = 150;
+  let s = `<rect x="0" y="60" width="240" height="20" rx="10" fill="var(--good)"/><rect x="240" y="60" width="240" height="20" rx="10" fill="var(--warn)"/>`;
+  s += `<line x1="240" y1="30" x2="240" y2="110" stroke="var(--text)" stroke-width="4"/>`;
+  [[205, 'var(--good)'], [272, 'var(--warn)']].forEach(([x, c]) => {
+    s += `<line x1="${x - 48}" y1="70" x2="${x + 48}" y2="70" stroke="var(--text)" stroke-width="4" opacity=".6"/><line x1="${x - 48}" y1="58" x2="${x - 48}" y2="82" stroke="var(--text)" stroke-width="4" opacity=".6"/><line x1="${x + 48}" y1="58" x2="${x + 48}" y2="82" stroke="var(--text)" stroke-width="4" opacity=".6"/>`;
+    s += `<circle cx="${x}" cy="70" r="14" fill="${c}" stroke="var(--surface)" stroke-width="4"/>`;
+  });
+  s += T(240, 140, 'Report a probability, not yes or no', 'tick', 'text-anchor="middle" style="font-size:21px"');
+  s += T(240, 22, 'Threshold', 'tick', 'text-anchor="middle" style="font-size:20px;font-weight:700"');
+  put('chartThreshold', svg(W, H, s));
+})();
+
+/* Core illustration (slide 25) */
+(() => {
+  const W = 130, H = 520;
+  let s = `<rect x="25" y="10" width="80" height="500" rx="16" fill="var(--surface-2)" stroke="var(--line)" stroke-width="3"/>`;
+  const layers = [['var(--sed1)', 'Today'], ['var(--sed2)', ''], ['var(--sed3)', ''], ['var(--sed2)', ''], ['var(--sed3)', 'Before industry']];
+  layers.forEach(([c], i) => { s += `<rect x="31" y="${16 + i * 98}" width="68" height="94" rx="${i === 0 || i === 4 ? 10 : 2}" fill="${c}"/>`; });
+  s += `<path d="M 65 470 L 65 60" stroke="var(--text)" stroke-width="3" marker-end="url(#ah2)" opacity=".7"/><defs><marker id="ah2" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="var(--text)"/></marker></defs>`;
+  put('coreIllo', svg(W, H, s));
+})();
+
+/* ---------- Deck engine ---------- */
+const deck = document.getElementById('deck');
+const slides = [...deck.querySelectorAll(':scope > .slide')];
+slides.forEach(sl => sl.querySelectorAll('.rise').forEach((el, i) => el.style.setProperty('--i', i)));
+let cur = 0;
+
+function fit() {
+  const s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+  deck.style.transform = `translate(-50%, -50%) scale(${s})`;
+}
+window.addEventListener('resize', fit); fit();
+
+function go(n, push = true) {
+  n = Math.max(0, Math.min(slides.length - 1, n));
+  slides.forEach((sl, i) => { sl.classList.toggle('active', i === n); sl.classList.toggle('past', i < n); });
+  cur = n;
+  document.getElementById('count').textContent = `${n + 1} / ${slides.length}`;
+  document.getElementById('footNum').textContent = `${n + 1} / ${slides.length}`;
+  document.getElementById('footer').classList.toggle('hidden', n === 0);
+  document.getElementById('progress').style.width = ((n + 1) / slides.length * 100) + '%';
+  if (push) history.replaceState(null, '', '#' + (n + 1));
+}
+const next = () => go(cur + 1), prev = () => go(cur - 1);
+const fromHash = () => { const n = parseInt(location.hash.slice(1), 10); return isNaN(n) ? 0 : n - 1; };
+window.addEventListener('hashchange', () => go(fromHash(), false));
+go(fromHash(), false);
+
+/* ---------- Themes ---------- */
+const THEMES = [['light', 'Light', '#f6f8fb', '#1d6fe0'], ['dark', 'Dark', '#0f141b', '#5ea3ff'], ['ocean', 'Ocean', '#062437', '#4fd8cc'],
+  ['sand', 'Sand', '#f5efe4', '#b2522a'], ['contrast', 'High contrast', '#000000', '#ffd400']];
+const store = { get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} } };
+const menu = document.getElementById('themeMenu');
+function setTheme(t) {
+  document.documentElement.dataset.theme = t; store.set('multised-theme', t);
+  menu.querySelectorAll('button').forEach(b => b.classList.toggle('sel', b.dataset.t === t));
+}
+menu.innerHTML = THEMES.map(([k, n, bg, ac]) => `<button data-t="${k}" role="menuitemradio"><span class="sw" style="background: linear-gradient(135deg, ${bg} 55%, ${ac} 55%)"></span>${n}</button>`).join('');
+menu.addEventListener('click', e => { const b = e.target.closest('button'); if (b) { setTheme(b.dataset.t); menu.classList.remove('open'); } });
+const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+const qTheme = new URLSearchParams(location.search).get('theme');
+setTheme((qTheme && THEMES.some(t => t[0] === qTheme) && qTheme) || store.get('multised-theme') || (prefersDark ? 'dark' : 'light'));
+const cycleTheme = () => { const i = THEMES.findIndex(t => t[0] === document.documentElement.dataset.theme); setTheme(THEMES[(i + 1) % THEMES.length][0]); };
+
+/* ---------- Laser pointer ---------- */
+const laser = document.getElementById('laser'), trail = document.getElementById('trail'), ctx = trail.getContext('2d');
+let laserOn = false, pts = [], raf = 0;
+function sizeTrail() { const d = window.devicePixelRatio || 1; trail.width = innerWidth * d; trail.height = innerHeight * d; ctx.setTransform(d, 0, 0, d, 0, 0); }
+window.addEventListener('resize', sizeTrail); sizeTrail();
+function drawTrail() {
+  const now = performance.now();
+  pts = pts.filter(p => now - p.t < 260);
+  ctx.clearRect(0, 0, innerWidth, innerHeight);
+  for (let i = 1; i < pts.length; i++) {
+    const a = 1 - (now - pts[i].t) / 260;
+    ctx.strokeStyle = `rgba(255, 40, 40, ${a * 0.55})`; ctx.lineWidth = 2 + a * 8; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(pts[i - 1].x, pts[i - 1].y); ctx.lineTo(pts[i].x, pts[i].y); ctx.stroke();
+  }
+  if (laserOn) raf = requestAnimationFrame(drawTrail);
+}
+function setLaser(on) {
+  laserOn = on; document.body.classList.toggle('laser-on', on);
+  document.getElementById('bLaser').classList.toggle('on', on);
+  cancelAnimationFrame(raf); if (on) drawTrail(); else ctx.clearRect(0, 0, innerWidth, innerHeight);
+}
+document.addEventListener('mousemove', e => {
+  if (laserOn) {
+    const overCtl = e.target.closest && e.target.closest('#controls');
+    laser.style.opacity = overCtl ? 0 : 1;
+    laser.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    if (!overCtl) pts.push({ x: e.clientX, y: e.clientY, t: performance.now() });
+  }
+});
+
+/* ---------- Overview ---------- */
+const ov = document.getElementById('overview'), grid = document.getElementById('overviewGrid');
+let ovBuilt = false;
+function buildOverview() {
+  grid.innerHTML = '';
+  slides.forEach((sl, i) => {
+    const th = document.createElement('div'); th.className = 'thumb'; th.dataset.i = i;
+    const inner = document.createElement('div'); inner.className = 'inner';
+    const c = sl.cloneNode(true); c.classList.add('active'); c.classList.remove('past'); c.removeAttribute('id');
+    c.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
+    inner.appendChild(c); th.appendChild(inner);
+    th.insertAdjacentHTML('beforeend', `<span class="num">${i + 1}</span>`);
+    th.addEventListener('click', () => { go(i); toggleOverview(false); });
+    grid.appendChild(th);
+  });
+  ovBuilt = true;
+}
+function scaleThumbs() { grid.querySelectorAll('.thumb').forEach(th => { th.querySelector('.inner').style.transform = `scale(${th.clientWidth / 1920})`; }); }
+function toggleOverview(force) {
+  const open = force ?? !ov.classList.contains('open');
+  if (open && !ovBuilt) buildOverview();
+  ov.classList.toggle('open', open);
+  if (open) { scaleThumbs(); grid.querySelectorAll('.thumb').forEach(t => t.classList.toggle('cur', +t.dataset.i === cur)); grid.children[cur]?.scrollIntoView({ block: 'center' }); }
+}
+window.addEventListener('resize', () => { if (ov.classList.contains('open')) scaleThumbs(); });
+
+/* ---------- Controls ---------- */
+const help = document.getElementById('help'), black = document.getElementById('blackout');
+const toggleFull = () => { if (!document.fullscreenElement) document.documentElement.requestFullscreen?.(); else document.exitFullscreen?.(); };
+document.getElementById('bPrev').onclick = prev;
+document.getElementById('bNext').onclick = next;
+document.getElementById('bOverview').onclick = () => toggleOverview();
+document.getElementById('bTheme').onclick = e => { e.stopPropagation(); menu.classList.toggle('open'); };
+document.getElementById('bLaser').onclick = () => setLaser(!laserOn);
+document.getElementById('bFull').onclick = toggleFull;
+document.getElementById('bHelp').onclick = () => help.classList.toggle('open');
+help.addEventListener('click', () => help.classList.remove('open'));
+document.addEventListener('click', e => { if (!e.target.closest('#controls')) menu.classList.remove('open'); });
+
+let typed = '';
+document.addEventListener('keydown', e => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const k = e.key;
+  if (black.classList.contains('on') && k !== 'b' && k !== 'B') { black.classList.remove('on'); }
+  if (/^[0-9]$/.test(k)) { typed += k; return; }
+  if (k === 'Enter' && typed) { go(parseInt(typed, 10) - 1); typed = ''; toggleOverview(false); return; }
+  typed = '';
+  switch (k) {
+    case 'ArrowRight': case 'PageDown': case ' ': case 'ArrowDown': e.preventDefault(); next(); break;
+    case 'ArrowLeft': case 'PageUp': case 'ArrowUp': case 'Backspace': e.preventDefault(); prev(); break;
+    case 'Home': go(0); break;
+    case 'End': go(slides.length - 1); break;
+    case 'l': case 'L': setLaser(!laserOn); break;
+    case 't': case 'T': cycleTheme(); break;
+    case 'f': case 'F': toggleFull(); break;
+    case 'o': case 'O': toggleOverview(); break;
+    case 'b': case 'B': case '.': black.classList.toggle('on'); break;
+    case '?': case 'h': case 'H': help.classList.toggle('open'); break;
+    case 'Escape': if (help.classList.contains('open')) help.classList.remove('open'); else if (menu.classList.contains('open')) menu.classList.remove('open'); else toggleOverview(); break;
+  }
+});
+
+/* Touch swipe */
+let tx0 = null;
+document.addEventListener('touchstart', e => { tx0 = e.touches[0].clientX; }, { passive: true });
+document.addEventListener('touchend', e => { if (tx0 == null) return; const dx = e.changedTouches[0].clientX - tx0; if (Math.abs(dx) > 50) (dx < 0 ? next : prev)(); tx0 = null; });
+
+/* Auto-hide controls when idle */
+const ctl = document.getElementById('controls');
+let idleT;
+const wake = () => { ctl.classList.remove('idle'); clearTimeout(idleT); idleT = setTimeout(() => { if (!menu.classList.contains('open') && !ctl.matches(':hover')) ctl.classList.add('idle'); }, 2500); };
+document.addEventListener('mousemove', wake); wake();
+})();
+</script>
+</body>
+</html>
